@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Click here to download [my latest CV]("https://cyfangus.github.io/files/AngusChan_CV_Mar2024.pdf")
+Click here to download [my latest CV]("http://cyfangus.github.io/files/AngusChan_CV_Mar2024.pdf")
 
 
 Education
