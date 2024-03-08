@@ -1,0 +1,17 @@
+---
+title: "Research Consultant"
+collection: teaching
+type: "Undergraduate course"
+permalink: /teaching/PGTA
+venue: "University College London, Department of Security and Crime Science"
+date: 2023-01-01
+location: "London, UK"
+---
+
+- Collaborated with Salesforce and Merseyside Police in a research team, conducting an A/B test for an
+online crime reporting portal. Explored the impact of its design on participant satisfaction and concluded
+that user experience and trust in police predict satisfaction.
+
+- Produced a comprehensive 53-page report, incorporating findings from statistical tests (t-test, ANOVA,
+linear regression) and Natural Language Processing on participants’ qualitative feedback to produce
+wordclouds by using R and Python.
