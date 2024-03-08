@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/PGTA
 venue: "University College London, Department of Security and Crime Science"
-date: 2014-01-01
+date: 2022-09-01
 location: "London, UK"
 ---
 
