@@ -1,7 +1,7 @@
 ---
 title: 'IMDB reviews sentiment classification'
 date: 2012-08-14
-permalink: /posts/2012/08/I/
+permalink: /posts/IMDB_classification/
 tags:
   - Multinomial Naive Bayes
   - Support Vector Machines
