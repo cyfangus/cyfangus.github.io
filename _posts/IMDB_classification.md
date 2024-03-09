@@ -1,6 +1,6 @@
 ---
 title: 'IMDB reviews sentiment classification'
-date: 2012-08-14
+date: 2024-03-09
 permalink: /posts/IMDB_classification/
 tags:
   - Multinomial Naive Bayes
