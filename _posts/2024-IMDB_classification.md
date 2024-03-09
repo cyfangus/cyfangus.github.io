@@ -1,7 +1,7 @@
 ---
 title: 'IMDB reviews sentiment classification'
 date: 2024-03-09
-permalink: /posts/IMDB_classification/
+permalink: /posts/2IMDB_classification/
 tags:
   - Multinomial Naive Bayes
   - Support Vector Machines
