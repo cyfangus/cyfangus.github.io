@@ -1,9 +1,9 @@
 ---
 title: "Postgraduate Teaching Assistant"
 collection: teaching
-type: ""
+type: "Security and Crime Science"
 permalink: /teaching/PGTA
-venue: "University College London, Department of Security and Crime Science"
+venue: "University College London"
 date: 2022-09-01
 location: "London, UK"
 ---
