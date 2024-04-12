@@ -1,6 +1,6 @@
 ---
 title: 'Agent-based modeling shoplifting simulation '
-date: 2024-03-09
+date: 2024-04-12
 permalink: /posts/2024/03/shoplifting-abm/
 tags:
   - Agent-based modeling
