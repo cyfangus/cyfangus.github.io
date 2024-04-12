@@ -1,11 +1,10 @@
 ---
-title: 'IMDB reviews sentiment classification'
+title: 'Agent-based modeling shoplifting simulation '
 date: 2024-03-09
-permalink: /posts/2024/03/IMDB-review/
+permalink: /posts/2024/03/shoplifting-abm/
 tags:
-  - Multinomial Naive Bayes
-  - Support Vector Machines (linear SVC)
-  - Random Forest Classification
+  - Agent-based modeling
+  - Simulation
 ---
 
-This project is part of the coursework from the applied data science module. By training models from a large dataset containing 25k IMDB movie reviews that have been labeled as either positive or negative, it predicts another 25k movie reviews to be positive or negative. For more details, please refer to the corresponding repository [IMDB_sentiment_classification](https://github.com/cyfangus/IMDB_sentiment_classification).
+This project is part of the coursework from the simluation for research module. Utilizing Netlogo, this codes creates a simulation in which security guard's probaility of detecting a shoplifting and shoplifter's probability of detecting a security guard nearby are manipulated. See more details at its repository [shoplifting ABM] (https://github.com/cyfangus/abm_shoplifting).
