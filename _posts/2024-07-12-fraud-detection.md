@@ -1,11 +1,14 @@
 ---
-title: 'IMDB reviews sentiment classification'
-date: 2024-03-09
-permalink: /posts/2024/03/IMDB-review/
+title: 'Fraud detection with supervised learning'
+date: 2024-07-12
+permalink: /posts/2024/04/fraud-detection/
 tags:
-  - Multinomial Naive Bayes
-  - Support Vector Machines (linear SVC)
-  - Random Forest Classification
+  - Synthetic Minority Over-sampling Technique (SMOTE)
+  - Logsitic Regression
+  - XGBoost
+  - Neural Network
 ---
 
-This project is part of the coursework from the applied data science module. By training models from a large dataset containing 25k IMDB movie reviews that have been labeled as either positive or negative, it predicts another 25k movie reviews to be positive or negative. For more details, please refer to the corresponding repository [IMDB_sentiment_classification](https://github.com/cyfangus/IMDB_sentiment_classification).
+This project is to predict fraudulent transactions from a [Kaggle dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) contatining 284,807 European credit card transactions with 492 fraudulent transactions that occurred over two days in September 2013.
+
+For more details, please refer to the corresponding repository [Fraud Detection with Supervised Learning (Logistic Regression, XGBoost, Neural Network)](https://github.com/cyfangus/fraud_detection_supervised_learning)).
