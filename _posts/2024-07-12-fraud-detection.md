@@ -1,7 +1,7 @@
 ---
 title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)'
 date: 2024-07-12
-image: https://github.com/user-attachments/assets/208e93bf-7a6d-4825-b268-700af9d9192b
+image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
 permalink: /posts/2024/04/fraud-detection/
 tags:
   - Synthetic Minority Over-sampling Technique (SMOTE)
@@ -10,9 +10,7 @@ tags:
   - Neural Network
 ---
 
-<img src="https://github.com/user-attachments/assets/208e93bf-7a6d-4825-b268-700af9d9192b" alt="Credit card fraud detection illustration" width="1024" height="1024" />
-
-
+<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711" />
 
 
 # Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)
