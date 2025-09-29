@@ -91,7 +91,8 @@ plt.xlabel('Log(Amount + 1)')
 plt.ylabel('Frequency')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/99ed6bd3-9875-4e51-80b8-f18102ba8161)
+![image](https://github.com/user-attachments/assets/5ebeaaaf-d625-40dc-b130-5106b96003dd)
+
 From this histogram, we can tell:
 1. Most Transactions Are Low Value: The biggest bar at the lower left (near log(Amount+1) = 0–1) means most transactions involve very small amounts.
 2. Long Tail for Higher Amounts: As the bars decrease to the right, it shows that high-value transactions are rare—consistent with real-world financial data.
