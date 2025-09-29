@@ -47,7 +47,8 @@ df = pd.read_csv('creditcard.csv')
 counter = Counter(df['Class'])
 print(f'The proportion of fraudulent transactions: {100*counter[1]/len(df):3f}%')
 ```
-**The proportion of fraudulent transactions: 0.172749%**
+**The proportion of fraudulent transactions: 0.172749%.**
+
 With this code, I confirmed that the dataset has a class imbalance with only 0.17% labelled as frauduelent transactions.
 
 Next, I move on to explore the distribution of Time and Amount of the transanction records.
