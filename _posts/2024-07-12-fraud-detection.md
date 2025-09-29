@@ -24,12 +24,9 @@ This project explores credit card fraud detection using a range of supervised le
 To tackle this, I compare algorithms including Logistic Regression, Random Forest, Naïve Bayes, and Neural Networks. I address class imbalance with the SMOTE oversampling method, and benchmark results against published research to ensure reliability.
 
 The project demonstrates:
-
-How machine learning can uncover fraud patterns in real-world financial data
-
-Practical challenges like data imbalance and model interpretability
-
-Actionable model comparisons tied to business needs
+1. How machine learning can uncover fraud patterns in real-world financial data
+2. Practical challenges like data imbalance and model interpretability
+    Actionable model comparisons tied to business needs
 
 If you’re interested in the technical details, open-source notebook, or further reading, see the links provided below. This post aims to share hands-on insights and lessons learned from building a fraud detection pipeline—making it accessible for anyone exploring data science for crime prevention or financial security.
 
