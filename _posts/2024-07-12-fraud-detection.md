@@ -62,7 +62,7 @@ plt.ylabel('Number of Transactions')
 plt.title('Distribution of Transactions Over Time')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/9b9e1d23-dca2-48d2-8abe-b9a83b44700e)
+<img width="871" height="545" alt="output1" src="https://github.com/user-attachments/assets/d0da776b-70f6-4b30-aa1b-14f6bc3e6eef" />
 
 With this historgram, I now can tell how transactions are distributed across the two-day period. The histogram shows a higher frequency of transactions during typical waking/working hours, with fewer transactions overnight. Since the dataset covers two consecutive days, you may see two similar patterns or peaks, relating to activity across both days. 
 From a fraud analysis perspective, this concentration can:
