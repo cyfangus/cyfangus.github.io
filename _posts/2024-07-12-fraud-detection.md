@@ -11,8 +11,7 @@ tags:
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Data Preparation](#data-preparation)
-- [Exploratory Analysis](#exploratory-analysis)
+- [Exploratory Data Analysis (EDA)](#exploratory-analysis)
 - [Model Training](#model-training)
 - [Results](#results)
 
@@ -33,7 +32,7 @@ If you’re interested in the technical details, open-source notebook, or furthe
 
 For more details, please refer to the corresponding repository [Fraud Detection with Supervised Learning (Logistic Regression, XGBoost, Neural Network)](https://github.com/cyfangus/fraud_detection_supervised_learning)).
 
-## Data Preparation
+## Exploratory Data Analysis (EDA)
 The analysis begins with a [real-world Kaggle dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) containing over 280,000 credit card transactions, of which only 492 are fraudulent. This dataset is both anonymized for privacy and highly imbalanced, making it a realistic but challenging test case for fraud detection.
 
 Key data preparation steps include:
@@ -96,7 +95,8 @@ From this histogram, we can tell:
 1. Most Transactions Are Low Value: The biggest bar at the lower left (near log(Amount+1) = 0–1) means most transactions involve very small amounts.
 2. Long Tail for Higher Amounts: As the bars decrease to the right, it shows that high-value transactions are rare—consistent with real-world financial data.
 3. Distinct Amount Clusters: The peaks at specific log values (e.g., around 1, 2, 3, etc.) suggest common transaction sizes—potentially round numbers or routine purchase values.
-4. 
+
+
 
 Handling class imbalance: Since fraud cases are rare, I use the SMOTE (Synthetic Minority Over-sampling Technique) algorithm to create synthetic fraud samples, ensuring that machine learning models have enough signal to learn from.
 
@@ -105,7 +105,7 @@ Feature selection and scaling: Features are analyzed for relevance, and numerica
 Splitting the data: The dataset is divided into training and test sets to fairly evaluate model performance.
 
 
-## Exploratory Analysis
+
 
 ## Model Training
 
