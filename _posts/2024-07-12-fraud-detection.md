@@ -104,15 +104,6 @@ From this histogram, we can tell:
 2. Long Tail for Higher Amounts: As the bars decrease to the right, it shows that high-value transactions are rare—consistent with real-world financial data.
 3. Distinct Amount Clusters: The peaks at specific log values (e.g., around 1, 2, 3, etc.) suggest common transaction sizes—potentially round numbers or routine purchase values.
 
-
-
-Handling class imbalance: Since fraud cases are rare, I use the SMOTE (Synthetic Minority Over-sampling Technique) algorithm to create synthetic fraud samples, ensuring that machine learning models have enough signal to learn from.
-
-Feature selection and scaling: Features are analyzed for relevance, and numerical values are standardized to support algorithms sensitive to scale.
-
-Splitting the data: The dataset is divided into training and test sets to fairly evaluate model performance.
-
-
 ## Feature Selection
 Feature selection is vital in machine learning, especially with highly dimensional datasets like the one used here, as it helps reduce noise, minimize overfitting, and improve model interpretability.To boost the performance and reliability of my fraud detection models, I implemented a structured, multi-step feature selection process by implemneting [FeatureSelector](https://github.com/WillKoehrsen/feature-selector) class created by WillKoehrsen to select features to be removed from the  dataset based on the following 5 methods:
 
