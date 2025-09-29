@@ -1,6 +1,7 @@
 ---
 title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)'
 date: 2024-07-12
+image: https://github.com/user-attachments/assets/438637eb-1d19-4c63-9c43-285f4401a590
 permalink: /posts/2024/04/fraud-detection/
 tags:
   - Synthetic Minority Over-sampling Technique (SMOTE)
