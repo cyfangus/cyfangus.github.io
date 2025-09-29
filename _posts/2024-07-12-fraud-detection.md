@@ -39,13 +39,14 @@ The analysis begins with a [real-world Kaggle dataset](https://www.kaggle.com/da
 Key data preparation steps include:
 
 Loading and inspecting the dataset: Checking for missing values, exploring class distribution, and getting familiar with the anonymized feature set.
-'''python
+```python
 import pandas as pd
 
 df = pd.read_csv('creditcard.csv')
 print(df.info())
 print(df['Class'].value_counts())
-'''
+```
+
 With this code, I confirmed that the dataset has 284,807 rows and observed the class imbalance.
 
 Handling class imbalance: Since fraud cases are rare, I use the SMOTE (Synthetic Minority Over-sampling Technique) algorithm to create synthetic fraud samples, ensuring that machine learning models have enough signal to learn from.
