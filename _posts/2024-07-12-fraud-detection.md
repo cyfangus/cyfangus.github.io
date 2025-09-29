@@ -92,7 +92,7 @@ plt.xlabel('Log(Amount + 1)')
 plt.ylabel('Frequency')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/5ebeaaaf-d625-40dc-b130-5106b96003dd)
+<img width="589" height="453" alt="output" src="https://github.com/user-attachments/assets/d19519e1-b858-4c18-87f5-22bf7679448f" />
 
 From this histogram, we can tell:
 1. Most Transactions Are Low Value: The biggest bar at the lower left (near log(Amount+1) = 0–1) means most transactions involve very small amounts.
