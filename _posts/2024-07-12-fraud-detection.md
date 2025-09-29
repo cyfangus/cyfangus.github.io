@@ -1,5 +1,5 @@
 ---
-title: 'Fraud detection with supervised learning'
+title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)'
 date: 2024-07-12
 permalink: /posts/2024/04/fraud-detection/
 tags:
@@ -8,6 +8,9 @@ tags:
   - XGBoost
   - Neural Network
 ---
+
+<img src="https://github.com/user-attachments/assets/438637eb-1d19-4c63-9c43-285f4401a590" alt="Credit card fraud detection illustration" width="2048" height="2048" />
+# Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)
 ## Table of Contents
 
 - [Project Overview](#project-overview)
