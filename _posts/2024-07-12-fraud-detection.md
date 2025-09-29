@@ -12,6 +12,7 @@ tags:
 
 - [Project Overview](#project-overview)
 - [Exploratory Data Analysis (EDA)](#exploratory-analysis)
+- [Feature Selection](#feature-selection)
 - [Model Training](#model-training)
 - [Results](#results)
 
@@ -105,8 +106,135 @@ Feature selection and scaling: Features are analyzed for relevance, and numerica
 Splitting the data: The dataset is divided into training and test sets to fairly evaluate model performance.
 
 
+## Feature Selection
+Feature selection is vital in machine learning, especially with highly dimensional datasets like the one used here, as it helps reduce noise, minimize overfitting, and improve model interpretability.To boost the performance and reliability of my fraud detection models, I implemented a structured, multi-step feature selection process by implemneting [FeatureSelector](https://github.com/WillKoehrsen/feature-selector) class created by WillKoehrsen to select features to be removed from the  dataset based on the following 5 methods:
 
+1. Remove Features with Excessive Missing Values: Columns with more than 60% missing data were identified and dropped, though our dataset fortunately contained none.
+2.  Eliminate Features with Only a Single Unique Value: Such features provide no predictive power and were not present here, but this check helps avoid unnecessary complexity.
+3.  Identify and Remove Highly Collinear Features: Features with high correlation (∣r∣>0.97) can introduce redundancy and multicollinearity, but our data did not have such pairs.
+4.  Discard Zero-Importance Features: Using a gradient boosting machine (LightGBM), I filtered out features that the model deemed completely irrelevant to the classification task.
+5. Prune Low-Importance Features: Finally, I removed features that did not contribute to 99% of cumulative feature importance according to the boosting model.
+
+```python
+from feature_selector.feature_selector import FeatureSelector
+
+X = df.drop('Class', axis=1)
+y = df['Class']
+fs = FeatureSelector(data = X, labels = y)
+fs.identify_missing(missing_threshold=0.6)
+fs.identify_single_unique()
+fs.identify_collinear(correlation_threshold=0.975)
+fs.identify_zero_importance(task = 'classification', eval_metric = 'auc', 
+                            n_iterations = 10, early_stopping = True)
+fs.identify_low_importance(cumulative_importance = 0.99)
+low_importance_features = fs.ops['low_importance']
+low_importance_features[:5]
+X_removed = fs.remove(methods = 'all')
+```
+
+By systematically applying these techniques, I ensured that my final dataset included only those features most useful for distinguishing fraudulent from legitimate transactions. This thoughtful curation not only increases computational efficiency but also supports the model in learning more meaningful patterns relevant to real-world fraud detection. Feature V2 was removed eventually by implementing these methods.
 
 ## Model Training
+Since I am dealing with imablanced datasets, which is very common in fraud detection task where the fraudulent cases are extremely rare (0.173% in our dataset), it is important to ensure that both training and testing sets contain a representative proportion of fraudulent cases. That allows the model to learn to recognize fraudulent patterns and evaluate its performance effectively. Therefore, here I apply stratified train-test split alongside a technique called Synthetic Minority Over-sampling Technique (SMOTE) to oversample the minority class in our dataset.
+
+```python
+from sklearn.model_selection import train_test_split
+
+# Stratified split to maintain the ratio of classes in train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X_removed, y, test_size=0.2, stratify=y, random_state=42)
+
+from imblearn.over_sampling import SMOTE
+
+smote = SMOTE(random_state=42)
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+counter = Counter(y_train_resampled)
+print(counter)
+```
+
+I then train the models with both orignal and resampled data, so that I can compare the performance of the models on these data.
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+def evaluate_models(X_train, y_train, X_test, y_test, X_train_resampled, y_train_resampled):
+    models = {
+        "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
+        "Naive Bayes": GaussianNB(),
+        "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
+        "ANN": MLPClassifier(hidden_layer_sizes=(50, 30, 30, 50), max_iter=500, random_state=42)
+    }
+
+    for model_name, model in models.items():
+        print(f"\n{model_name} (Original Data):")
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        print(f'Accuracy: {accuracy_score(y_test, y_pred):.4f}')
+        print(f'Precision: {precision_score(y_test, y_pred):.4f}')
+        print(f'Recall: {recall_score(y_test, y_pred):.4f}')
+        print(f'F1 score: {f1_score(y_test, y_pred):.4f}')
+
+        print(f"\n{model_name} (Resampled Data):")
+        model.fit(X_train_resampled, y_train_resampled)
+        y_pred_resampled = model.predict(X_test)
+        print(f'Accuracy: {accuracy_score(y_test, y_pred_resampled):.4f}')
+        print(f'Precision: {precision_score(y_test, y_pred_resampled):.4f}')
+        print(f'Recall: {recall_score(y_test, y_pred_resampled):.4f}')
+        print(f'F1 score: {f1_score(y_test, y_pred_resampled):.4f}')
+
+evaluate_models(X_train, y_train, X_test, y_test, X_train_resampled, y_train_resampled)
+```
 
 ## Results
+
+```python
+import matplotlib.pyplot as plt
+
+# Storing metrics in a dictionary
+results = {
+    'Random Forest (Resampled)': {'accuracy': 0.9996, 'precision': 0.8842, 'recall': 0.8571, 'f1_score': 0.8705},
+    'Random Forest (Original)': {'accuracy': 0.9996, 'precision': 0.9412, 'recall': 0.8163, 'f1_score': 0.8743},
+    'ANN (Original)': {'accuracy': 0.9994, 'precision': 0.8667, 'recall': 0.7959, 'f1_score': 0.8298},
+    'ANN (Resampled)': {'accuracy': 0.9989, 'precision': 0.6434, 'recall': 0.8469, 'f1_score': 0.7313},
+    'Naive Bayes (Resampled)': {'accuracy': 0.9740, 'precision': 0.0552, 'recall': 0.8776, 'f1_score': 0.1039},
+    'Naive Bayes (Original)': {'accuracy': 0.9773, 'precision': 0.0609, 'recall': 0.8469, 'f1_score': 0.1137},
+    'Logistic Regression (Resampled)': {'accuracy': 0.9823, 'precision': 0.0827, 'recall': 0.9184, 'f1_score': 0.1518},
+    'Logistic Regression (Original)': {'accuracy': 0.9992, 'precision': 0.8228, 'recall': 0.6633, 'f1_score': 0.7345}
+}
+
+def plot_metrics(results):
+    metrics = ['accuracy', 'precision', 'recall', 'f1_score']
+    num_models = len(results)
+    model_names = list(results.keys())
+    
+    # Set up subplots for each metric
+    fig, axes = plt.subplots(1, len(metrics), figsize=(20, 5), sharey=True)
+    
+    for i, metric in enumerate(metrics):
+        values = [results[model][metric] for model in model_names]
+        axes[i].barh(model_names, values, color='skyblue')
+        axes[i].set_title(metric.capitalize())
+        axes[i].set_xlim(0, 1)
+        for j, v in enumerate(values):
+            axes[i].text(v + 0.01, j, f"{v:.4f}", va='center')  # Add text labels
+    
+    plt.tight_layout()
+    plt.show()
+
+# Call the function to plot the results
+plot_metrics(results)
+```
+<img width="1989" height="490" alt="image" src="https://github.com/user-attachments/assets/c78f17f4-c601-4ef4-862b-2abfae1523dc" />
+
+As a fast growing menace in finance industry, credit card fraud can be detected more effectively by adopting machine learning. In the application supervised learning algorithm in fraud detection, it is important to take the highly skewed datasets into consideration. The presence of significantly more genuine transactions than fraudulent ones (class imbalance) poses a challenge. Specialized techniques like resampling or using class weights are essential to balance the training process.
+
+The reuslts show that 
+1. Random Forest with resampled data appears to be the best-performing model for this task, achieving a strong balance between precision, recall, and F1 score. This makes it a practical choice for fraud detection, as it minimizes false positives (high precision) while maintaining a good recall.
+3. ANN with original data also performs well and could be a suitable alternative, although it may require further tuning (e.g., different architectures, class weights) to achieve similar robustness as Random Forest.
+4. istic Regression could be considered for simpler, smaller datasets but struggles with imbalanced data when resampling is applied.
+5. Naive Bayes is not suitable for this type of fraud detection task due to its low precision, which leads to too many false positives.
+
+In summary, Random Forest is likely the best option in this case among these models for detecting fraudulent transactions in an imbalanced dataset, offering strong performance without needing resampling.
