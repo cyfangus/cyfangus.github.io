@@ -105,7 +105,7 @@ From this histogram, we can tell:
 3. Distinct Amount Clusters: The peaks at specific log values (e.g., around 1, 2, 3, etc.) suggest common transaction sizes—potentially round numbers or routine purchase values.
 
 ## Feature Selection
-Feature selection is vital in machine learning, especially with highly dimensional datasets like the one used here, as it helps reduce noise, minimize overfitting, and improve model interpretability.To boost the performance and reliability of my fraud detection models, I implemented a structured, multi-step feature selection process by implemneting [FeatureSelector](https://github.com/WillKoehrsen/feature-selector) class created by WillKoehrsen to select features to be removed from the  dataset based on the following 5 methods:
+Feature selection is vital in machine learning, especially with highly dimensional datasets like the one used here, as it helps reduce noise, minimize overfitting, and improve model interpretability. To boost the performance and reliability of my fraud detection models, I implemented a structured, multi-step feature selection process by implemneting [FeatureSelector](https://github.com/WillKoehrsen/feature-selector) class created by WillKoehrsen to select features to be removed from the  dataset based on the following 5 methods:
 
 1. Remove Features with Excessive Missing Values: Columns with more than 60% missing data were identified and dropped, though our dataset fortunately contained none.
 2.  Eliminate Features with Only a Single Unique Value: Such features provide no predictive power and were not present here, but this check helps avoid unnecessary complexity.
