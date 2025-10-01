@@ -77,14 +77,16 @@ From a fraud analysis perspective, this concentration can:
  ```python
 df['Amount'].describe()
 ```
-count,284807.000000
-mean,88.349619
-std,250.120109
-min,0.000000
-25%,5.600000
-50%,22.000000
-75%,77.165000
-max,25691.160000
+
+| count | 284807.000000 |
+| mean | 88.349619 |
+| std | 250.120109 |
+| min | 0.000000 |
+| 25% | 5.600000 |
+| 50% | 22.000000 |
+| 75% | 77.165000 |
+| max | 25691.160000 |
+
 
 From the above descriptive statistics, we can see the data is hevaily skewed. Therefore, log transformation will allow us to better visualize these patterns and prepare the feature for modeling (reducing skew, stabilizing variance).
 
