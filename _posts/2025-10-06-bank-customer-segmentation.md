@@ -13,11 +13,9 @@ tags:
 <img width="2048" height="2048" alt="image" src="https://github.com/user-attachments/assets/22de57a5-ce22-400f-86db-70029e09233c" />
 
 # Bank Customer Segmentation: Data Science Portfolio Project
-**Project repo:** [GitHub - BankCustomerSegmentation](https://github.com/cyfangus/BankCustomerSegmentation)
 
 
 
-# Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Workflow Overview](#workflow-overview)
@@ -27,8 +25,8 @@ tags:
 
 ## Project Overview
 
-Banks face the challenge of understanding, managing, and retaining millions of customers. This project applies **data-driven segmentation** techniques to classify bank customers according to profitability and behavior, enabling targeted marketing and business strategies that maximize revenue and retention.
-
+Banks face the challenge of understanding, managing, and retaining millions of customers. This project applies **data-driven segmentation** techniques to classify bank customers according to profitability and behavior, enabling targeted marketing and business strategies that maximize revenue and retention. 
+**Project repo:** [GitHub - BankCustomerSegmentation](https://github.com/cyfangus/BankCustomerSegmentation)
 I use a real-world dataset (Kaggle: 1M+ transactions, 800K+ customers, India) with rich demographics, account balances, and transactional histories. My workflow combines unsupervised clustering (*K-Means*) with demographic analysis and supervised machine learning (LightGBM).
 
 ---
