@@ -1,5 +1,5 @@
 ---
-title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)'
+title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE) & Generative Synthetic Data'
 date: 2024-07-12
 image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
 permalink: /posts/2024/04/fraud-detection/
@@ -13,7 +13,7 @@ tags:
 <img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711" />
 
 
-# Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)
+# Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE) & Generative Synthetic Data
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Exploratory Data Analysis (EDA)](#exploratory-analysis)
