@@ -19,7 +19,8 @@ tags:
 - [Project Overview](#project-overview)
 - [EDA](#eda)
 - [Feature Engineering](#feature-engineering)
-- [Business & Technical Impact](#business-impact)
+- [Customer Segmentation](customer-segmentation)
+- [Demographic Insight](#demographic-insight)
 
 
 ## Project Overview
@@ -84,7 +85,8 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img width="591" height="453" alt="Location Distribution" src="[https://github.com/user-attachments/assets/6ba71e04-fe44-4386-902c-14d972179ee8](https://github.com/user-attachments/assets/2f26fcd6-5e4c-488a-975e-301031ec58dc)" />
+<img width="989" height="590" alt="Location Distribution" src="https://github.com/user-attachments/assets/63e43679-a6f8-44a8-a0fc-93d7a3177536" />
+
 
 **3. Account Balance and Transaction Amounts**
 Account Balance and Transaction Amounts were foudn to be heavily skewed, which is very common in real-world scenarios. Log transformation was applied to both to better visualise its distribution.
@@ -99,7 +101,7 @@ plt.xlabel('Log(1 + Balance) (INR)')
 plt.ylabel('Count')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/14fd94d5-dbcf-4984-b204-18bef9bbeef5)
+<img width="708" height="468" alt="Accout Balance Distribution" src="https://github.com/user-attachments/assets/4648e21e-db89-4ae7-92b0-36b987c5e82f" />
 
 ```python
 # Histogram of Transaction Amounts (log-transformed)
@@ -112,7 +114,7 @@ plt.xlabel('Log(1 + Amount) (INR)')
 plt.ylabel('Count')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/b12b5508-c0bb-4d8b-b090-a0d1a909fa72)
+<img width="708" height="468" alt="Transaction Amount Distribution" src="https://github.com/user-attachments/assets/552c21a7-42d8-455f-8cfa-eb528ba8f830" />
 
 **4. Age**
 ```python
@@ -127,7 +129,10 @@ plt.title('Customer Age Distribution')
 plt.xlabel('Age')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/9e1766ed-58db-48bb-9641-ae93a3cd721f)
+
+<img width="591" height="453" alt="Age Distribution" src="https://github.com/user-attachments/assets/be9aa1ea-5394-4401-92bf-cfcdb5dbb41e" />
+
+
 Age was computed from the difference between current date and customer's DOB, and then was ploted in a historgram.
 
 **5. EDA Summary:**
@@ -158,8 +163,8 @@ scaler = RobustScaler()
 X_scaled = scaler.fit_transform(customer_report[features])
 ```
 
-## Customer Segmentation (K-Means Clustering)
-Now, it goes to the main task, using K-means clustering to put customers into 4 segments. The reason why I picked 4 segments and K-means clustering is based on a recent systematic review on algorithmic customer segmentation, that K-means clustering with 4 segments is found to be the most common method in using machine learning methods to group customers. For more details, see [Salminen, J., Mustak, M., Sufyan, M. et al.](https://doi.org/10.1057/s41270-023-00235-5).
+## Customer Segmentation
+Now, it goes to the main task, using **K-means clustering** to put customers into 4 segments. The reason why I picked 4 segments and K-means clustering is based on a recent systematic review on algorithmic customer segmentation, that K-means clustering with 4 segments is found to be the most common method in using machine learning methods to group customers. For more details, see [Salminen, J., Mustak, M., Sufyan, M. et al.](https://doi.org/10.1057/s41270-023-00235-5).
 
 ```python
 kmeans = KMeans(n_clusters=4, random_state=42)
@@ -187,15 +192,36 @@ print(segment_profile)
 2          |      148792 |  9.890596e+06   |    64.467939  | 46192.802503  | 0.692355 |
 3          |       98428  | 8.684481e+07   |   724.731447   |  261.786160  | 6.079254  |  
 
+I further explore the composition of these segments by investigating their number and revenue contributioons.
+```python
+segment_counts = customer_report['Segment'].value_counts(normalize=True) * 100
+percent_df = segment_counts.reset_index()
+percent_df.columns = ['Segment', 'Percent']
 
-- Applied K-Means (n=4) on standardized behavioral features.
-- Identified groups:
+sns.barplot(x='Segment', y='Percent', data=percent_df)
+plt.title('Percentage of Customers in Each Segment')
+plt.xlabel('Segment')
+plt.ylabel('Percent of Customers')
+plt.show()
+```
+<img width="560" height="453" alt="CustomerPerSegment" src="https://github.com/user-attachments/assets/db9c8a3d-9cc7-4d10-9195-8155dba5a5a7" />
+
+```python
+segment_profile['RevenuePct'].plot(kind='bar', color='skyblue')
+plt.title('Revenue Contribution by Segment')
+plt.xlabel('Segment')
+plt.ylabel('Percentage of Total Revenue (%)')
+plt.show()
+```
+<img width="560" height="447" alt="RevenueContributions" src="https://github.com/user-attachments/assets/8977ed82-11ad-4457-83bb-5d12833fdd10" />
+
+According to the result, these are the identified groups:
     - **Segment 0:** Premier Clients (top 20%, contribute 80%+ revenue)
     - **Segment 1:** Mass Market (largest % of clients, steady mid-level value)
     - **Segment 2:** Dormant/Low Value (least value, disengaged)
     - **Segment 3:** Transactional/Emerging (active, low-average balances)
 
-**5. Demographic Insight**
+## Demographic Insight
 
 - Applied Chi-square/Kruskal-Wallis tests to explore segment-demographic relationships.
 - Significant patterns found: Segment 0 skewed female and metropolitan, Segment 2/3 skewed male, strong location impact (Mumbai/New Delhi clusters for Premier clients).
