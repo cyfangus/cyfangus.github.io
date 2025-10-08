@@ -31,9 +31,9 @@ Banks face the challenge of understanding, managing, and retaining millions of c
 ---
 
 ## EDA
-- Loaded 1-million+ transaction records, filtered out rows with missing key fields (DOB, gender, location, balances).
-- Standardized date formats (birthdate, transaction date), cleaned rare gender occurrences.
+For the first step of the project, I loaded the 1-million+ transaction records, filtereed out rows with missing key fields (DOB, gender, location, balances), standardised date formats (birthdate, transaction date), and cleaned the rare gender occurence. To have a brief understanding of how the data looks like, I have plotted a few graphs to illustrtae some patterns found in different features.
 
+**1. Gender**
 ```python
 # Distribution of Customer Gender
 sns.countplot(data=df, x='CustGender')
@@ -41,9 +41,11 @@ plt.title('Customer Gender Distribution')
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/81d5dc29-e9b8-4348-bd7b-717db7d3b52b)
+![image](https://github.com/user-attachments/assets/dd09f3a3-30cf-46b9-a1eb-60f9f5ffe9a7)
+
 The data shows that there is an imbalance between gender groups, with males almost 2.5x fold of females.
 
+**2. Locations**
 ```python
 print(f'Customers are from {len(df['CustLocation'].unique())} unqiue locations.')
 
@@ -80,8 +82,9 @@ plt.ylabel('CustLocation')
 plt.tight_layout()
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/dcdd3c01-f6a2-4827-9e0b-ae423121d546)
+![image](https://github.com/user-attachments/assets/2f26fcd6-5e4c-488a-975e-301031ec58dc)
 
+**3. Account Balance and Transaction Amounts**
 Account Balance and Transaction Amounts were foudn to be heavily skewed, which is very common in real-world scenarios. Log transformation was applied to both to better visualise its distribution.
 ```python
 # Histogram of Customer Account Balance (log-transformed)
@@ -94,7 +97,8 @@ plt.xlabel('Log(1 + Balance) (INR)')
 plt.ylabel('Count')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/a63e321f-79bb-49f3-81fa-99558a33b248)
+![image](https://github.com/user-attachments/assets/14fd94d5-dbcf-4984-b204-18bef9bbeef5)
+
 ```python
 # Histogram of Transaction Amounts (log-transformed)
 df['log_amount'] = np.log1p(df['TransactionAmount (INR)'] +1)
@@ -106,9 +110,9 @@ plt.xlabel('Log(1 + Amount) (INR)')
 plt.ylabel('Count')
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/4dcb41f5-aa7d-46c5-8668-102ab712b595)
+![image](https://github.com/user-attachments/assets/b12b5508-c0bb-4d8b-b090-a0d1a909fa72)
 
-
+**4. Age**
 ```python
 # Additional: Analyze customer age if needed
 if 'CustomerDOB' in df.columns:
@@ -121,22 +125,66 @@ plt.title('Customer Age Distribution')
 plt.xlabel('Age')
 plt.show()
 ```
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/9e1766ed-58db-48bb-9641-ae93a3cd721f)
 Age was computed from the difference between current date and customer's DOB, and then was ploted in a historgram.
 
-
-**EDA Summary:**
+**5. EDA Summary:**
 - Visualized distributions: account balance and transaction amounts (log-transform to handle skew).
 - Grouped top 15 locations (covering 60% of all customers), assigned 'Other' for analysis clarity.
 - Filtered out ages <18 and >90 for robust modeling.
 
 ## Feature Engineering
+After EDA, I then proceeded to feature engineering before applying clustering methods to group customers into 4 segments. These include aggeregate customer activities in terms of their transaction sums, recency, frequency. I also generate interaction features, such as age bins, age-bins-location mix, gender-location mix, age-bins-gender mix, location based GDP per hear as attributes. 
+```python
+# Group transactions by CustomerID to get aggregate behavioral and value metrics
+customer_report = df.groupby('CustomerID').agg({
+    'TransactionAmount (INR)': ['sum', 'mean', 'count'],
+    'CustAccountBalance': 'last',
+    'TransactionDate': ['min', 'max']
+})
+customer_report.columns = ['TotalTransSum', 'AvgTransAmount', 'TransCount', 'EndBalance', 'FirstTrans', 'LastTrans']
 
-- Aggregated activities by customer: total transaction sum, average transaction, frequency, account end balance, recency.
-- Generated interaction features: age bins, gender-location mix, GDP-based location attributes.
+customer_report['Log_TotalTransSum'] = np.log1p(customer_report['TotalTransSum'])
+customer_report['Log_AvgTransAmount'] = np.log1p(customer_report['AvgTransAmount'])
+customer_report['Log_EndBalance'] = np.log1p(customer_report['EndBalance'])
 
-**4. Customer Segmentation (K-Means Clustering)**
+customer_report['RecencyDays'] = (pd.to_datetime('today') - customer_report['LastTrans']).dt.days
+customer_report.reset_index(inplace=True)
 
+features = ['Log_TotalTransSum', 'Log_AvgTransAmount', 'TransCount', 'Log_EndBalance', 'RecencyDays']
+scaler = RobustScaler()
+X_scaled = scaler.fit_transform(customer_report[features])
+```
+
+## Customer Segmentation (K-Means Clustering)
+Now, it goes to the main task, using K-means clustering to put customers into 4 segments. The reason why I picked 4 segments and K-means clustering is based on a recent systematic review on algorithmic customer segmentation, that K-means clustering with 4 segments is found to be the most common method in using machine learning methods to group customers. For more details, see [Salminen, J., Mustak, M., Sufyan, M. et al.](https://doi.org/10.1057/s41270-023-00235-5).
+
+```python
+kmeans = KMeans(n_clusters=4, random_state=42)
+customer_report['Segment'] = kmeans.fit_predict(X_scaled)
+
+segment_profile = customer_report.groupby('Segment').agg({
+    'CustomerID': 'count',
+    'TotalTransSum': 'sum',
+    'AvgTransAmount': 'mean',
+    'EndBalance': 'mean'
+}).rename(columns={'CustomerID': 'NumOfCustomers'})
+
+# Calculate percentage revenue/profit per segment
+total_revenue = segment_profile['TotalTransSum'].sum()
+segment_profile['RevenuePct'] = 100 * segment_profile['TotalTransSum'] / total_revenue
+
+print(segment_profile)
+```
+
+```
+|        | NumOfCustomers | TotalTransSum | AvgTransAmount   |  EndBalance | RevenuePct  |
+|Segment  |----|----|----|----|----|                                                              
+0         |       231385 |  1.146041e+09  |   4193.875822 | 228902.678497 |  80.224432  |
+1         |       359981 | 1.857673e+08   |   461.943159  | 77088.697022   |13.003959  |
+2          |      148792 |  9.890596e+06   |    64.467939  | 46192.802503  | 0.692355 |
+3          |       98428  | 8.684481e+07   |   724.731447   |  261.786160  | 6.079254  |  
+```
 - Applied K-Means (n=4) on standardized behavioral features.
 - Identified groups:
     - **Segment 0:** Premier Clients (top 20%, contribute 80%+ revenue)
