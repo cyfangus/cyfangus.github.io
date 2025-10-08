@@ -177,14 +177,15 @@ segment_profile['RevenuePct'] = 100 * segment_profile['TotalTransSum'] / total_r
 print(segment_profile)
 ```
 
-```
+
 |        | NumOfCustomers | TotalTransSum | AvgTransAmount   |  EndBalance | RevenuePct  |
 |Segment  |----|----|----|----|----|                                                              
 0         |       231385 |  1.146041e+09  |   4193.875822 | 228902.678497 |  80.224432  |
 1         |       359981 | 1.857673e+08   |   461.943159  | 77088.697022   |13.003959  |
 2          |      148792 |  9.890596e+06   |    64.467939  | 46192.802503  | 0.692355 |
 3          |       98428  | 8.684481e+07   |   724.731447   |  261.786160  | 6.079254  |  
-```
+
+
 - Applied K-Means (n=4) on standardized behavioral features.
 - Identified groups:
     - **Segment 0:** Premier Clients (top 20%, contribute 80%+ revenue)
