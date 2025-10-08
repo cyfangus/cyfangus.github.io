@@ -21,6 +21,7 @@ tags:
 - [Feature Engineering](#feature-engineering)
 - [Customer Segmentation](customer-segmentation)
 - [Demographic Insight](#demographic-insight)
+- [Supervised ML Prediction](#supervised-ml-prediction)
 
 
 ## Project Overview
@@ -222,12 +223,95 @@ According to the result, these are the identified groups:
     - **Segment 3:** Transactional/Emerging (active, low-average balances)
 
 ## Demographic Insight
+To understand if there is a significant relationship between customers' background and their banking behaviours, Chi-square/Kruskal-Wallis tests were applied.
+```python
+# Create observed contingency table
+contingency = pd.crosstab(customer_with_demo['Segment'], customer_with_demo['CustGender'])
+chi2, p, dof, expected = chi2_contingency(contingency)
 
-- Applied Chi-square/Kruskal-Wallis tests to explore segment-demographic relationships.
+# Calculate standardized residuals
+residuals = (contingency - expected) / np.sqrt(expected)
+
+# Plot heatmap of standardized residuals
+plt.figure(figsize=(8, 6))
+sns.heatmap(residuals, annot=True, cmap='coolwarm', center=0)
+plt.title('Standardized Residuals for Gender vs. Segment')
+plt.xlabel('Gender')
+plt.ylabel('Segment')
+plt.show()
+```
+<img width="646" height="545" alt="GenderVSSeg" src="https://github.com/user-attachments/assets/76d978d7-994c-4214-8f3b-19ecef42512e" />
+```python
+# Build observed contingency table for Segment vs TopLocation
+contingency_loc = pd.crosstab(customer_with_demo['Segment'], customer_with_demo['Top15Location'])
+
+# Chi-square test and expected counts
+chi2, p, dof, expected_loc = chi2_contingency(contingency_loc)
+
+# Calculate standardized residuals
+residuals_loc = (contingency_loc - expected_loc) / np.sqrt(expected_loc)
+
+# Plot heatmap of standardized residuals
+plt.figure(figsize=(18, 6))
+sns.heatmap(residuals_loc, annot=True, fmt=".1f", cmap="coolwarm", center=0, cbar_kws={'label': 'Std. Residual'})
+plt.title("Standardized Residuals for Top Locations vs. Segment")
+plt.xlabel("Top Location")
+plt.ylabel("Segment")
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+```
+<img width="1606" height="590" alt="LocationsVSSeg" src="https://github.com/user-attachments/assets/faf89458-34e0-4f9b-8b57-416738fe3e1c" />
+```python
+plt.figure(figsize=(10,6))
+sns.boxplot(x='Segment', y='Age', data=customer_with_demo, showfliers=False)
+plt.title('Age Distribution by Segment')
+plt.xlabel('Segment')
+plt.ylabel('Age')
+plt.show()
+```
+<img width="839" height="545" alt="AgeBySeg" src="https://github.com/user-attachments/assets/e11a11b4-ebd8-46a3-924b-bcce2b30bf42" />
+
+**Summary**
 - Significant patterns found: Segment 0 skewed female and metropolitan, Segment 2/3 skewed male, strong location impact (Mumbai/New Delhi clusters for Premier clients).
-- Interaction features using metropolitan GDP/population enrich location profile.
 
-**6. Supervised Prediction (LightGBM)**
+## Supervised ML Prediction
+Noting that there is significant relationship between customers' background, I moved on to train a Light GBM to classify whether a customer is likely to be fall into the high-valued Segment 0 or not.
+
+```python
+# Train LightGBM classifier
+baseline_model = lgb.LGBMClassifier(
+    objective='binary',
+    n_estimators=1000,
+    random_state=42
+)
+
+# Fit with early stopping + logging (LightGBM 4.x uses callbacks)
+baseline_model.fit(
+    X_train, y_train,
+    eval_set=[(X_val, y_val)],
+    callbacks=[lgb.early_stopping(50), lgb.log_evaluation(50)]
+)
+
+# Predict and evaluate
+baseline_proba = baseline_model.predict_proba(X_val)
+baseline_y_pred = np.argmax(baseline_proba, axis=1)
+
+print("Baseline Macro F1:", f1_score(y_val, baseline_y_pred, average='macro'))
+print(classification_report(y_val, baseline_y_pred))
+```
+```
+Baseline Macro F1: 0.4897450189570368
+              precision    recall  f1-score   support
+
+       False       0.71      0.97      0.82    136987
+        True       0.55      0.09      0.16     59503
+
+    accuracy                           0.70    196490
+   macro avg       0.63      0.53      0.49    196490
+weighted avg       0.66      0.70      0.62    196490
+```
+
 
 - Built a classifier to predict Premier segment status using demographic, behavioral, and engineered features.
 - Addressed class imbalance using LightGBM `class_weight`.
