@@ -1,14 +1,16 @@
 ---
 title: 'Bank Customer Segmentation (Portfolio Project)'
 date: 2025-10-06
-image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
-permalink: /posts/2024/04/fraud-detection/
+image: [https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711](https://github.com/user-attachments/assets/22de57a5-ce22-400f-86db-70029e09233c)
+permalink: /posts/2025/01/bank-customer-segmentation./
 tags:  
   - Customer Segmentation
   - KMeans Clustering
   - Light GBM
   - Location- and demographic-based targeting business strategy
 ---
+
+<img width="2048" height="2048" alt="image" src="https://github.com/user-attachments/assets/22de57a5-ce22-400f-86db-70029e09233c" />
 
 # Bank Customer Segmentation: Data Science Portfolio Project
 **Project repo:** [GitHub - BankCustomerSegmentation](https://github.com/cyfangus/BankCustomerSegmentation)
