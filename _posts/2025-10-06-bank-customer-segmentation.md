@@ -3,13 +3,17 @@ title: 'Bank Customer Segmentation (Portfolio Project)'
 date: 2025-10-06
 image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
 permalink: /posts/2024/04/fraud-detection/
-tags:
+tags:  
+  - Customer Segmentation
+  - KMeans Clustering
+  - Light GBM
+  - Location- and demographic-based targeting business strategy
+---
 
 # Bank Customer Segmentation: Data Science Portfolio Project
-
 **Project repo:** [GitHub - BankCustomerSegmentation](https://github.com/cyfangus/BankCustomerSegmentation)
 
----
+
 
 # Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE)
 ## Table of Contents
