@@ -178,8 +178,8 @@ print(segment_profile)
 ```
 
 
-|        | NumOfCustomers | TotalTransSum | AvgTransAmount   |  EndBalance | RevenuePct  |
-|Segment  |----|----|----|----|----|                                                              
+|   Segment     | NumOfCustomers | TotalTransSum | AvgTransAmount   |  EndBalance | RevenuePct  |
+| ---- |----|----|----|----|----|                                                              
 0         |       231385 |  1.146041e+09  |   4193.875822 | 228902.678497 |  80.224432  |
 1         |       359981 | 1.857673e+08   |   461.943159  | 77088.697022   |13.003959  |
 2          |      148792 |  9.890596e+06   |    64.467939  | 46192.802503  | 0.692355 |
