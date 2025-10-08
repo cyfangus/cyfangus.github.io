@@ -41,7 +41,8 @@ plt.title('Customer Gender Distribution')
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/dd09f3a3-30cf-46b9-a1eb-60f9f5ffe9a7)
+<img width="591" height="453" alt="Gender Distribution" src="https://github.com/user-attachments/assets/6ba71e04-fe44-4386-902c-14d972179ee8" />
+
 
 The data shows that there is an imbalance between gender groups, with males almost 2.5x fold of females.
 
@@ -82,7 +83,8 @@ plt.ylabel('CustLocation')
 plt.tight_layout()
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/2f26fcd6-5e4c-488a-975e-301031ec58dc)
+
+<img width="591" height="453" alt="Location Distribution" src="[https://github.com/user-attachments/assets/6ba71e04-fe44-4386-902c-14d972179ee8](https://github.com/user-attachments/assets/2f26fcd6-5e4c-488a-975e-301031ec58dc)" />
 
 **3. Account Balance and Transaction Amounts**
 Account Balance and Transaction Amounts were foudn to be heavily skewed, which is very common in real-world scenarios. Log transformation was applied to both to better visualise its distribution.
