@@ -1,5 +1,5 @@
 ---
-title: 'Bank Customer Segmentation (Portfolio Project)'
+title: 'Bank Customer Segmentation'
 date: 2025-10-06
 image: https://github.com/user-attachments/assets/848426b4-5e18-4b66-9b06-cc297ead5b66
 permalink: /posts/2025/01/bank-customer-segmentation./
@@ -16,8 +16,6 @@ tags:
 
 
 # Bank Customer Segmentation: Data Science Portfolio Project
-
-
 
 ## Table of Contents
 - [Project Overview](#project-overview)
