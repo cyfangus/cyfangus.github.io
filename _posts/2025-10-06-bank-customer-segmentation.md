@@ -10,7 +10,6 @@ tags:
   - Location- and demographic-based targeting business strategy
 ---
 
-<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8540db10-16e6-48f3-b469-08fefa743165" />
 <img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/848426b4-5e18-4b66-9b06-cc297ead5b66" />
 
 
