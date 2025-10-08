@@ -17,33 +17,120 @@ tags:
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [Workflow Overview](#workflow-overview)
-- [Key Results & Visualization](#key-result)
+- [EDA](#eda)
+- [Feature Engineering](#feature-engineering)
 - [Business & Technical Impact](#business-impact)
 
 
 ## Project Overview
 
-Banks face the challenge of understanding, managing, and retaining millions of customers. This project applies **data-driven segmentation** techniques to classify bank customers according to profitability and behavior, enabling targeted marketing and business strategies that maximize revenue and retention. 
+Banks face the challenge of understanding, managing, and retaining millions of customers. This project applies **data-driven segmentation** techniques to classify bank customers according to profitability and behavior, enabling targeted marketing and business strategies that maximize revenue and retention. I use a real-world dataset (Kaggle: 1M+ transactions, 800K+ customers, India) with rich demographics, account balances, and transactional histories. My workflow combines unsupervised clustering (*K-Means*) with demographic analysis and supervised machine learning (LightGBM).
+
 **Project repo:** [GitHub - BankCustomerSegmentation](https://github.com/cyfangus/BankCustomerSegmentation)
-I use a real-world dataset (Kaggle: 1M+ transactions, 800K+ customers, India) with rich demographics, account balances, and transactional histories. My workflow combines unsupervised clustering (*K-Means*) with demographic analysis and supervised machine learning (LightGBM).
 
 ---
 
-## Workflow Overview
-
-**1. Data Loading & Cleansing**
-
+## EDA
 - Loaded 1-million+ transaction records, filtered out rows with missing key fields (DOB, gender, location, balances).
 - Standardized date formats (birthdate, transaction date), cleaned rare gender occurrences.
 
-**2. Exploratory Data Analysis**
+```python
+# Distribution of Customer Gender
+sns.countplot(data=df, x='CustGender')
+plt.title('Customer Gender Distribution')
+plt.show()
+```
 
+![image](https://github.com/user-attachments/assets/81d5dc29-e9b8-4348-bd7b-717db7d3b52b)
+The data shows that there is an imbalance between gender groups, with males almost 2.5x fold of females.
+
+```python
+print(f'Customers are from {len(df['CustLocation'].unique())} unqiue locations.')
+
+location_counts = df['CustLocation'].value_counts()
+total_customers = len(df)
+
+# Compute cumulative sum of customer counts sorted by top locations
+cumulative_pct = location_counts.cumsum() / total_customers * 100
+
+# Print coverage for top 10, 15, 20 locations
+for n in [10, 15, 20]:
+    print(f"Top {n} locations cover: {cumulative_pct.iloc[n-1]:.2f}% of customers")
+```
+```
+Customers are from 8157 unqiue locations.
+Top 10 locations cover: 52.24% of customers
+Top 15 locations cover: 59.14% of customers
+Top 20 locations cover: 62.93% of customers
+```
+Because there is a large number of unique locations in the customer records, I decide to keep the top 15 locations and bin the rest into a 'Other' category as it covers about 60% of the customers already.
+
+```python
+# Compute and plot top 15 locations by count
+top_15_locations = df['CustLocation'].value_counts().nlargest(15).index
+df['Top15Location'] = df['CustLocation'].where(df['CustLocation'].isin(top_15_locations), 'Other')
+
+top_15_location_counts = df['Top15Location'].value_counts().sort_values()
+
+plt.figure(figsize=(10,6))
+top_15_location_counts.plot(kind='barh', color='skyblue')
+plt.title('Top 15 Customer Locations plus Other')
+plt.xlabel('Count')
+plt.ylabel('CustLocation')
+plt.tight_layout()
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/dcdd3c01-f6a2-4827-9e0b-ae423121d546)
+
+Account Balance and Transaction Amounts were foudn to be heavily skewed, which is very common in real-world scenarios. Log transformation was applied to both to better visualise its distribution.
+```python
+# Histogram of Customer Account Balance (log-transformed)
+df['log_balance'] = np.log1p(df['CustAccountBalance'] + 1)
+
+plt.figure(figsize=(8, 5))
+sns.histplot(df['log_balance'], bins=50, kde=True)
+plt.title('Log-Transformed Customer Account Balance Distribution')
+plt.xlabel('Log(1 + Balance) (INR)')
+plt.ylabel('Count')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/a63e321f-79bb-49f3-81fa-99558a33b248)
+```python
+# Histogram of Transaction Amounts (log-transformed)
+df['log_amount'] = np.log1p(df['TransactionAmount (INR)'] +1)
+
+plt.figure(figsize=(8, 5))
+sns.histplot(df['log_amount'], bins=50, kde=True)
+plt.title('Log-Transformed Transaction Amount Distribution')
+plt.xlabel('Log(1 + Amount) (INR)')
+plt.ylabel('Count')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/4dcb41f5-aa7d-46c5-8668-102ab712b595)
+
+
+```python
+# Additional: Analyze customer age if needed
+if 'CustomerDOB' in df.columns:
+    current_date = pd.to_datetime('today').normalize()
+    df.loc[df['CustomerDOB'] > current_date, 'CustomerDOB'] -= pd.DateOffset(years=100)
+    df['Age'] = (current_date - df['CustomerDOB']).dt.days // 365
+
+sns.histplot(df['Age'], bins=20)
+plt.title('Customer Age Distribution')
+plt.xlabel('Age')
+plt.show()
+```
+![Uploading image.png…]()
+Age was computed from the difference between current date and customer's DOB, and then was ploted in a historgram.
+
+
+**EDA Summary:**
 - Visualized distributions: account balance and transaction amounts (log-transform to handle skew).
 - Grouped top 15 locations (covering 60% of all customers), assigned 'Other' for analysis clarity.
 - Filtered out ages <18 and >90 for robust modeling.
 
-**3. Feature Engineering**
+## Feature Engineering
 
 - Aggregated activities by customer: total transaction sum, average transaction, frequency, account end balance, recency.
 - Generated interaction features: age bins, gender-location mix, GDP-based location attributes.
