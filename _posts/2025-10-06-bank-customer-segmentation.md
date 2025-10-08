@@ -23,7 +23,6 @@ tags:
 - [Demographic Insight](#demographic-insight)
 - [Supervised ML Prediction](#supervised-ml-prediction)
 - [Conclusion](#conclusion)
-- [Business & Technical Impact](#business-&-technical-impact)
 
 
 ## Project Overview
