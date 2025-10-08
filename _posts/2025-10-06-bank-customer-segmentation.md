@@ -13,7 +13,6 @@ tags:
 <img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/848426b4-5e18-4b66-9b06-cc297ead5b66" />
 
 
-
 # Bank Customer Segmentation: Data Science Portfolio Project
 
 ## Table of Contents
