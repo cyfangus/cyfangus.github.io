@@ -1,7 +1,7 @@
 ---
 title: 'Bank Customer Segmentation (Portfolio Project)'
 date: 2025-10-06
-image: https://github.com/user-attachments/assets/22de57a5-ce22-400f-86db-70029e09233c
+image: https://github.com/user-attachments/assets/ee904c1b-2cac-4ffb-ada0-2910e35fcea1
 permalink: /posts/2025/01/bank-customer-segmentation./
 tags:  
   - Customer Segmentation
@@ -10,7 +10,8 @@ tags:
   - Location- and demographic-based targeting business strategy
 ---
 
-<img width="2048" height="2048" alt="image" src="https://github.com/user-attachments/assets/22de57a5-ce22-400f-86db-70029e09233c" />
+<img width="2048" height="2048" alt="image" src="https://github.com/user-attachments/assets/ee904c1b-2cac-4ffb-ada0-2910e35fcea1" />
+
 
 # Bank Customer Segmentation: Data Science Portfolio Project
 
