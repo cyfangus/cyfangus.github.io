@@ -22,6 +22,8 @@ tags:
 - [Customer Segmentation](customer-segmentation)
 - [Demographic Insight](#demographic-insight)
 - [Supervised ML Prediction](#supervised-ml-prediction)
+- [Conclusion](#conclusion)
+- [Business & Technical Impact](#business-&-technical-impact)
 
 
 ## Project Overview
@@ -311,48 +313,95 @@ Baseline Macro F1: 0.4897450189570368
    macro avg       0.63      0.53      0.49    196490
 weighted avg       0.66      0.70      0.62    196490
 ```
+```python
+classes, counts = np.unique(y_train, return_counts=True)
+weights = {int(c): len(y_train)/(len(classes)*cnt) for c, cnt in zip(classes, counts)}
+
+# Train LightGBM classifier
+added_cw_model = lgb.LGBMClassifier(
+    class_weight=weights,
+    objective='binary',
+    n_estimators=1000,
+    random_state=42
+)
+
+# Fit with early stopping + logging (LightGBM 4.x uses callbacks)
+added_cw_model.fit(
+    X_train, y_train,
+    eval_set=[(X_val, y_val)],
+    callbacks=[lgb.early_stopping(50), lgb.log_evaluation(50)]
+)
+
+# Predict and evaluate
+added_cw_model_proba = added_cw_model.predict_proba(X_val)
+added_cw_model_y_pred = np.argmax(added_cw_model_proba, axis=1)
+
+print("After adding class weight Macro F1:", f1_score(y_val, added_cw_model_y_pred, average='macro'))
+print(classification_report(y_val, added_cw_model_y_pred))
+```
+
+```
+After adding class weight Macro F1: 0.5857263380582927
+              precision    recall  f1-score   support
+
+       False       0.77      0.63      0.70    136987
+        True       0.40      0.58      0.48     59503
+
+    accuracy                           0.61    196490
+   macro avg       0.59      0.60      0.59    196490
+weighted avg       0.66      0.61      0.63    196490
+```
+
+```python
+metrics_before = [
+    precision_score(y_val, baseline_y_pred),
+    recall_score(y_val, baseline_y_pred),
+    f1_score(y_val, baseline_y_pred)
+]
+metrics_after = [
+    precision_score(y_val, added_cw_model_y_pred),
+    recall_score(y_val, added_cw_model_y_pred),
+    f1_score(y_val, added_cw_model_y_pred)
+]
+metrics = ['Precision', 'Recall', 'F1']
+
+x = np.arange(len(metrics))
+width = 0.35
+
+fig, ax = plt.subplots(figsize=(7,5))
+ax.bar(x - width/2, metrics_before, width, label='Before')
+ax.bar(x + width/2, metrics_after, width, label='After', color='orange')
+ax.set_xticks(x)
+ax.set_xticklabels(metrics)
+ax.set_ylabel('Score')
+ax.set_ylim(0, 1)
+ax.set_title('Key Metrics Before and After Class Weights')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+<img width="690" height="490" alt="beforeVSafter" src="https://github.com/user-attachments/assets/56ed5360-4b79-48f1-8371-3d9dfd419099" />
+
+This barplot shows the difference between the light GBM model before and after adding calss weights. As it shows, Marco F1 increased from 0.49 to 0.58 and recall for top-valued customer (segment 0) has improved substantially from 0.09 to 0.58), making the model much better at catching all valuabale customers after adding class weight. It can facilitate marketing/retention strategies that target this group of customers by predicting their likelihood to be a top-valued customer just based on a few simple backgrdoun information (gender, locations, and age).
 
 
-- Built a classifier to predict Premier segment status using demographic, behavioral, and engineered features.
-- Addressed class imbalance using LightGBM `class_weight`.
-- Metrics after class weighting:
-    - **Macro F1**: Increased from 0.49 to 0.58
-    - **Recall** for top-value customers improved substantially (from 0.09 to 0.58)
-    - Balanced precision/recall—model is now much better at catching all valuable customers, key for marketing/retention.
-
----
-
-## Key Results & Visualization
-
+## Conclusion
+**summary**
 - **Premier Clients** generate 80%+ of revenue from only 20% of the base—critical for retention focus!
 - Segment demographics underpin the business case for personalized offerings.
 - *Location-based targeting* revealed: Mumbai/New Delhi dominate Premier segment opportunity.
 - *Class weighting* in ML models dramatically improves recall for strategic segment identification.
 
-![Revenue Contribution by Segment](link_to_your_visualization_if_hosted)
-![Age Distribution by Segment](link_to_your_visualization_if_hosted)
-
----
-
-## Business & Technical Impact
-
+**Business & Technical Impact**
 - Enables **targeted engagement:** VIP campaigns, mass-market upselling, dormant customer reactivation
 - Facilitates resource allocation: banks can prioritize segments and regions that drive the most business impact
 - Provides a repeatable framework for clustering and prediction in other domains (retail, insurance, fintech)
 
----
-
-## Tech Stack
-
+**Tech Stack**
 - Python (3.9+), Jupyter Notebook
 - Pandas, Numpy, Matplotlib, Seaborn
-- scikit-learn, LightGBM, SHAP, SciPy
+- scikit-learn, LightGBM, SciPy
 
----
-
-## Source & Next Steps
-
+**Source & Next Steps**
 - Full notebook and code at [GitHub](https://github.com/cyfangus/BankCustomerSegmentation)
 - Next steps: extend segmentation to temporal analysis, deploy as real-time dashboard, and apply transfer learning on related banking datasets.
-
----
