@@ -385,11 +385,12 @@ This barplot shows the difference between the light GBM model before and after a
 
 
 ## Conclusion
-**summary**
+
+**Summary**
 - **Premier Clients** generate 80%+ of revenue from only 20% of the base—critical for retention focus!
 - Segment demographics underpin the business case for personalized offerings.
-- *Location-based targeting* revealed: Mumbai/New Delhi dominate Premier segment opportunity.
-- *Class weighting* in ML models dramatically improves recall for strategic segment identification.
+- **Location-based targeting** revealed: Mumbai/New Delhi dominate Premier segment opportunity.
+- **Class weighting** in ML models dramatically improves recall for strategic segment identification.
 
 **Business & Technical Impact**
 - Enables **targeted engagement:** VIP campaigns, mass-market upselling, dormant customer reactivation
