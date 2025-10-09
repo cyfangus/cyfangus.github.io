@@ -69,9 +69,8 @@ plt.legend()
 plt.show()
 ```
 <img width="866" height="553" alt="TransactionByClass" src="https://github.com/user-attachments/assets/c999eb30-013f-4a0f-b881-f8bc564b407b" />
-From this plot, you can observe that both fraudulent and non-fraudulent transactions in the dataset show a broadly similar distribution pattern for the transaction amounts when normalized and viewed on a logarithmic scale. The density of both classes appears highest at lower transaction amounts (roughly under 100 units), and both tails drop off as the transaction amount increases. There is not a dramatic difference indicating that fraud is concentrated at either extreme—fraudulent transactions span a similar range of amounts as legitimate ones, with densities concentrated in lower-value transactions.
 
-- Simiarly, due to the heavy imbalance class,it is not a good way to visualise the count distribution of fraud and non-fraud transaction cases. Therefore, a density plot is used to compare their difference. 
+From this plot, you can observe that both fraudulent and non-fraudulent transactions in the dataset show a broadly similar distribution pattern for the transaction amounts when normalized and viewed on a logarithmic scale. The density of both classes appears highest at lower transaction amounts (roughly under 100 units), and both tails drop off as the transaction amount increases. There is not a dramatic difference indicating that fraud is concentrated at either extreme—fraudulent transactions span a similar range of amounts as legitimate ones, with densities concentrated in lower-value transactions.
 
 ```python
 data_nonfraud = data[data['Class'] == 0]
