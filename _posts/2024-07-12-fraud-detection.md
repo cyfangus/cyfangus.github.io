@@ -72,11 +72,9 @@ plt.show()
 From this plot, you can observe that both fraudulent and non-fraudulent transactions in the dataset show a broadly similar distribution pattern for the transaction amounts when normalized and viewed on a logarithmic scale. The density of both classes appears highest at lower transaction amounts (roughly under 100 units), and both tails drop off as the transaction amount increases. There is not a dramatic difference indicating that fraud is concentrated at either extreme—fraudulent transactions span a similar range of amounts as legitimate ones, with densities concentrated in lower-value transactions.
 
 - Simiarly, due to the heavy imbalance class,it is not a good way to visualise the count distribution of fraud and non-fraud transaction cases. Therefore, a density plot is used to compare their difference. 
-```python
-# Data for non-fraudulent transactions
-data_nonfraud = data[data['Class'] == 0]
 
-# Data for fraudulent transactions
+```python
+data_nonfraud = data[data['Class'] == 0]
 data_fraud = data[data['Class'] == 1]
 
 plt.figure(figsize=(14, 6))
@@ -94,7 +92,9 @@ plt.title('Transaction Time Distribution for Fraud and Non-Fraud')
 plt.legend()
 plt.show()
 ```
+
 <img width="1142" height="545" alt="TimeByClass" src="https://github.com/user-attachments/assets/6f2e4d08-ed6c-41a8-97d9-d24c59387fad" />
+
 Now, this plot better visualise the difference on the overal density, peaks, and concentration across time for both classes by showing their relative likelihoods, smoothing out minor fluctuations caused by the low number of fraud cases. It highlights the potential of time effect on the slightly higher fraud propensity, even if those differences are subtle.
 
 ### 5. Correlation Matrix & Feature Engineering:
