@@ -18,10 +18,10 @@ tags:
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [EDA](#eda)
-- [Data Preprocessing & Augmentation](#data-preprocessing-&-augmentation)
-- [Model Training & Evaluation](model-training-&-evaluation)
-- [Visualisation & Reporting](#visualisation-&-reporting)
-- [Findings & Domain Insights](#findings-&-domain-insights)
+- [Data Preprocessing & Augmentation](#data-preprocessing--augmentation)
+- [Model Training & Evaluation](model-training--evaluation)
+- [Visualisation & Reporting](#visualisation--reporting)
+- [Findings & Domain Insights](#findings--domain-insights)
 - [Next Steps](#next-steps)
 - [Conclusion](#conclusion)
 
