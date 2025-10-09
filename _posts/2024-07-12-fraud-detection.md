@@ -28,19 +28,34 @@ tags:
 This project tests whether traditional ML models, enhanced via class balancing, can match deep learning performance for fraud detection. Using the creditcard.csv dataset, minority-oversampling methods—SMOTE and generative synthetic data (SDV)—expand the sample, helping classical models like Random Forest, XGBoost, and Logistic Regression overcome the challenges of extreme class imbalance. Model evaluation focuses on the rare but critical fraud class and benchmarks against a neural MLP baseline.
 
 ## Exploratory Data Analysis (EDA)
-- Data Structure & Feature Summary:
-1. 284,807 transactions, 30 PCA features + Amount, Time, Class.
-2. Data is highly imbalanced: fraud cases are < 0.2% of all records.
+1. Data Structure & Feature Summary:
+- 284,807 transactions, 30 PCA features + Amount, Time, Class.
+- Data is highly imbalanced: fraud cases are < 0.2% of all records.
 
-- Class Imbalance:
-![image](https://github.com/user-attachments/assets/f6975a02-1d23-47db-bc45-88233877994e)
+2. Class Imbalance:
+```python
+sns.countplot(x='Class', data=data)
+plt.title('Class Distribution (0: Non-Fraud, 1: Fraud)')
+plt.show()
+```
+<img width="591" height="453" alt="ClassDistribution" src="https://github.com/user-attachments/assets/6cb23748-38ea-4789-9291-1e2e91175791" />
+The class distribution visualization reveals a highly imbalanced dataset, where the vast majority of transactions are non-fraudulent (Class 0), and fraudulent transactions (Class 1) constitute only a very small fraction of the total data. This extreme imbalance highlights a core challenge in fraud detection modeling, as conventional classifiers tend to be biased towards the majority class and may perform poorly in detecting rare but critical fraudulent cases. This finding directly underpins the rationale for incorporating data augmentation techniques such as SMOTE and generative AI-generated synthetic data in the project. These techniques aim to alleviate the class imbalance by oversampling the minority class, thereby enabling traditional machine learning models to better learn patterns associated with fraud and improve detection performance while validating the project’s objective of enhancing classical algorithms to reach deep learning-level effectiveness.
 
-
-Amount & Time Distributions:
-
-Transaction amounts are heavily right-skewed, but fraud isn’t confined to extremes—fraud occurs across all values.
-
-Time-based features show periodic trends but fraud mirrors the overall transaction cycles.
+4. Amount & Time Distributions:
+- Transaction amounts are heavily right-skewed. Therefore, a KDE plot is used to compare the density of fraud and non-fraud transaction.
+```python
+# Transaction Amount Distribution by Class
+plt.figure(figsize=(10,6))
+sns.kdeplot(data=data[data['Class'] == 0], x='Amount', label='Non-Fraud', fill=True, common_norm=False)
+sns.kdeplot(data=data[data['Class'] == 1], x='Amount', label='Fraud', fill=True, common_norm=False, color="r")
+plt.xscale('log')
+plt.title('Transaction Amount Distribution by Class (Log Scale, Normalized)')
+plt.legend()
+plt.show()
+```
+<img width="866" height="553" alt="TransactionByClass" src="https://github.com/user-attachments/assets/c999eb30-013f-4a0f-b881-f8bc564b407b" />
+From this plot, you can observe that both fraudulent and non-fraudulent transactions in the dataset show a broadly similar distribution pattern for the transaction amounts when normalized and viewed on a logarithmic scale. The density of both classes appears highest at lower transaction amounts (roughly under 100 units), and both tails drop off as the transaction amount increases. There is not a dramatic difference indicating that fraud is concentrated at either extreme—fraudulent transactions span a similar range of amounts as legitimate ones, with densities concentrated in lower-value transactions.
+- Time-based features show periodic trends but fraud mirrors the overall transaction cycles.
 
 Correlation Matrix & Feature Engineering:
 
