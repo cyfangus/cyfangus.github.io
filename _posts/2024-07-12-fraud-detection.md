@@ -1,10 +1,11 @@
 ---
-title: 'Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE) & Generative Synthetic Data'
+title: 'Credit Card Fraud Detection: Traditional ML Enhanced with Synthetic Data & SMOTE'
 date: 2024-07-12
 image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
 permalink: /posts/2024/04/fraud-detection/
 tags:
   - Synthetic Minority Over-sampling Technique (SMOTE)
+  - Random Forest
   - Logsitic Regression
   - XGBoost
   - Neural Network
