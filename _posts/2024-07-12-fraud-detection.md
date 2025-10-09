@@ -36,11 +36,20 @@ This project tests whether traditional ML models, enhanced via class balancing, 
 
 ### 2. Class Imbalance:
 ```python
-sns.countplot(x='Class', data=data)
-plt.title('Class Distribution (0: Non-Fraud, 1: Fraud)')
+# get the set of distinct classes
+labels = data.Class.unique()
+
+# get the count of each class
+sizes = data.Class.value_counts().values
+
+# plot the class value counts
+fig, ax = plt.subplots()
+ax.pie(sizes, labels=labels, autopct='%1.3f%%')
+ax.set_title('Class Distribution (0: Non-Fraud, 1: Fraud)')
 plt.show()
 ```
-<img width="591" height="453" alt="ClassDistribution" src="https://github.com/user-attachments/assets/6cb23748-38ea-4789-9291-1e2e91175791"/>
+<img width="389" height="410" alt="ClassDistribution" src="https://github.com/user-attachments/assets/752ed67f-3a0e-4cbe-9801-ff51753e57c4" />
+
 
 The class distribution visualization reveals a highly imbalanced dataset, where the vast majority of transactions are non-fraudulent (Class 0), and fraudulent transactions (Class 1) constitute only a very small fraction of the total data. This extreme imbalance highlights a core challenge in fraud detection modeling, as conventional classifiers tend to be biased towards the majority class and may perform poorly in detecting rare but critical fraudulent cases. This finding directly underpins the rationale for incorporating data augmentation techniques such as SMOTE and generative AI-generated synthetic data in the project. These techniques aim to alleviate the class imbalance by oversampling the minority class, thereby enabling traditional machine learning models to better learn patterns associated with fraud and improve detection performance while validating the project’s objective of enhancing classical algorithms to reach deep learning-level effectiveness.
 
