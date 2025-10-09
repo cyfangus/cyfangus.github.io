@@ -56,19 +56,22 @@ df['Amount'].describe()
 | 50% | 22.000000 |
 | 75% | 77.165000 |
 | max | 25691.160000 |
-- Transaction amounts are heavily right-skewed. Therefore, a KDE plot is used to compare the density of fraud and non-fraud transaction.
+
+- Transaction amounts are heavily right-skewed. Therefore, it is log-transformed for better visualisation and computation.
 
 ```python
 # Transaction Amount Distribution by Class
+data['Log_Amount'] = np.log1p(data['Amount'] + 1)
+
 plt.figure(figsize=(10,6))
-sns.kdeplot(data=data[data['Class'] == 0], x='Amount', label='Non-Fraud', fill=True, common_norm=False)
-sns.kdeplot(data=data[data['Class'] == 1], x='Amount', label='Fraud', fill=True, common_norm=False, color="r")
-plt.xscale('log')
+sns.kdeplot(data=data[data['Class'] == 0], x='Log_Amount', label='Non-Fraud', fill=True, common_norm=False)
+sns.kdeplot(data=data[data['Class'] == 1], x='Log_Amount', label='Fraud', fill=True, common_norm=False, color="r")
 plt.title('Transaction Amount Distribution by Class (Log Scale, Normalized)')
 plt.legend()
 plt.show()
 ```
-<img width="866" height="553" alt="TransactionByClass" src="https://github.com/user-attachments/assets/c999eb30-013f-4a0f-b881-f8bc564b407b" />
+<img width="851" height="545" alt="AmountKDE" src="https://github.com/user-attachments/assets/255614fc-f24c-4854-a413-ece2c8a0f4b5" />
+
 
 From this plot, you can observe that both fraudulent and non-fraudulent transactions in the dataset show a broadly similar distribution pattern for the transaction amounts when normalized and viewed on a logarithmic scale. The density of both classes appears highest at lower transaction amounts (roughly under 100 units), and both tails drop off as the transaction amount increases. There is not a dramatic difference indicating that fraud is concentrated at either extreme—fraudulent transactions span a similar range of amounts as legitimate ones, with densities concentrated in lower-value transactions.
 
