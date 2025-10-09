@@ -12,7 +12,107 @@ tags:
 
 <img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711" />
 
+# Credit Card Fraud Detection: Traditional ML Enhanced with Synthetic Data & SMOTE
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [EDA](#eda)
+- [Data Preprocessing & Augmentation](#data-preprocessing-&-augmentation)
+- [Model Training & Evaluation](model-training-&-evaluation)
+- [Visualisation & Reporting](#visualisation-&-reporting)
+- [Findings & Domain Insights](#findings-&-domain-insights)
+- [Next Steps](#next-steps)
+
+
+## Project Overview
+This project tests whether traditional ML models, enhanced via class balancing, can match deep learning performance for fraud detection. Using the creditcard.csv dataset, minority-oversampling methods—SMOTE and generative synthetic data (SDV)—expand the sample, helping classical models like Random Forest, XGBoost, and Logistic Regression overcome the challenges of extreme class imbalance. Model evaluation focuses on the rare but critical fraud class and benchmarks against a neural MLP baseline.
+
+## Exploratory Data Analysis (EDA)
+- Data Structure & Feature Summary:
+1. 284,807 transactions, 30 PCA features + Amount, Time, Class.
+2. Data is highly imbalanced: fraud cases are < 0.2% of all records.
+
+- Class Imbalance:
+![image](https://github.com/user-attachments/assets/f6975a02-1d23-47db-bc45-88233877994e)
+
+
+Amount & Time Distributions:
+
+Transaction amounts are heavily right-skewed, but fraud isn’t confined to extremes—fraud occurs across all values.
+
+Time-based features show periodic trends but fraud mirrors the overall transaction cycles.
+
+Correlation Matrix & Feature Engineering:
+
+Features are mainly uncorrelated (PCA), so non-linear or ensemble models are needed.
+
+Log-transforming Amount improves interpretability; engineered temporal features suggested.
+
+EDA Insights:
+
+Outlines risks of ignoring minority class, need for robust scaling, and value of combining multiple features.
+
+3. Data Preprocessing & Augmentation
+Log transformation of Amount
+
+RobustScaler applied to all continuous features
+
+SMOTE for interpolating minority samples
+
+Synthetic Data Vault (SDV) for creating new data from probabilistic modeling, blending with SMOTE records for richer distribution
+
+Balanced training sets maximize model learning on fraud records
+
+4. Model Training & Evaluation
+Algorithms:
+
+Random Forest, XGBoost, Logistic Regression, and MLP
+
+Hyperparameters tuned via cross-validation
+
+Metrics:
+
+Precision, recall, F1, ROC-AUC—especially focused on their values for Class 1 (fraud).
+
+Comparative Results
+
+On original data: Good AUC, moderate recall for minority class.
+
+On synthetic data: AUC and recall for fraud improve; sometimes precision drops (more false positives), especially for Logistic Regression—acceptable when false negatives are costlier than reviews.
+
+5. Visualization & Reporting
+ROC curves compare original vs synthetic-augmented data for each model.
+
+Precision/recall tables help interpret results operationally.
+
+Visuals support arguments for model selection—MLP and Random Forest give a precision/recall balance, XGBoost shines at recall.
+
+6. Findings & Domain Insights
+Synthetic sampling boosts recall, critical for fraud loss prevention.
+
+Models must be tuned for cost—lots of false positives can overload investigators.
+
+XGBoost favored for recall, Random Forest/MLP for balanced deployment.
+
+Model choice should reflect business tolerances, not just metrics.
+
+7. Next Steps
+Optimize recall without sacrificing precision (class weights, threshold tuning)
+
+Engineer more features (domain-specific, embeddings, interaction terms)
+
+Use stratified cross-validation, cost-sensitive loss, confusion matrix for validation
+
+Add model explainability (SHAP, LIME) for analyst trust and regulatory compliance
+
+8. Conclusion
+Class balancing is essential for fraud detection—synthetic data unlocks the ability for classic models to catch elusive fraud. The right ML strategy can prevent millions in losses, but requires careful metrics, business context understanding, and operational tuning.
+
+
+
+
+
+=====================
 # Fraud Detection Using Supervised Learning with Synthetic Minority Over-sampling Technique (SMOTE) & Generative Synthetic Data
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -25,7 +125,6 @@ tags:
 ## Project Overview
 
 This project explores credit card fraud detection using a range of supervised learning techniques. Leveraging a publicly available, highly imbalanced dataset of European credit card transactions, the goal is to identify fraudulent activity—an especially challenging problem in finance.
-
 To tackle this, I compare algorithms including Logistic Regression, Random Forest, Naïve Bayes, and Neural Networks. I address class imbalance with the SMOTE oversampling method, and benchmark results against published research to ensure reliability.
 
 The project demonstrates:
