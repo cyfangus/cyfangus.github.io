@@ -395,9 +395,9 @@ precision-recall curves compare the model performance on different datasets.
 	•	These methods show understanding of the evolving fraud tactics financial institutions face and support compliance with AML and KYC protocols, ensuring institutional resilience.
 
 ### Business Insights
-1. Random Forest and XGBoost with SMOTE are the most robust combinations for fraud detection. They balance sensitivity (recall) and specificity (precision), crucial for minimizing operational loss, customer inconvenience, and regulatory exposure. They balance sensitivity (recall) and specificity (precision), crucial for minimizing operational loss, customer inconvenience, and regulatory exposure.
-2. Oversampling and synthetic augmentation give models a decisive edge, supporting real-time transaction screening and risk management.
-3. Logistic Regression and neural networks are less effective without class balancing or advanced sampling, highlighting the need to align model selection with business risk profiles and operational imperatives.
+1. Random Forest and XGBoost with SMOTE are the most robust combinations for fraud detection. They balance sensitivity (recall) and specificity (precision), crucial for **minimizing operational loss, customer inconvenience, and regulatory exposure**. They balance sensitivity (recall) and specificity (precision), crucial for minimizing operational loss, customer inconvenience, and regulatory exposure.
+2. Oversampling and synthetic augmentation give models a decisive edge, **supporting real-time transaction screening and risk management**.
+3. Logistic Regression and neural networks are less effective without class balancing or advanced sampling, highlighting the need to **align model selection with business risk profiles and operational imperatives**.
 
 ## Next Steps
 1. Optimize recall without sacrificing precision (class weights, threshold tuning)
