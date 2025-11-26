@@ -33,7 +33,7 @@ To create truly effective, harm-reduction strategies, we need a smarter approach
 ## Part 1
 ### Quantifying Harm with the National Crime Harm Index (NCHI)
 
-The first step in this analysis was injecting value into the data. We achieved this by applying the logic of the National Crime Harm Index (NCHI), which quantifies the severity of a crime based on the typical custodial sentence it incurs.
+The first step in this analysis was injecting value into the data. We achieved this by applying the logic of the National Crime Harm Index (NCHI), which quantifies the severity of a crime based on the typical custodial sentence it incurs. For more details, please refer to the concept paper 'Sherman, L.W. and Cambridge University associates., 2020. How to Count Crime: the Cambridge Harm Index Consensus. Cambridge Journal of Evidence-Based Policing, pp.1-14'
 
 Instead of treating every crime equally, we assigned a 'Harm Score' (measured in custodial days) to each incident:
 
