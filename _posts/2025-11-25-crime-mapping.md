@@ -8,7 +8,7 @@ tags:
   - Hotspot Policing
   - Crime Hamr Index
   - Time Series Forecasting
-  - Destiny Based Clustering
+  - Density Based Clustering
 ---
 
 <img width="512" height="512" alt="crime-mapping" src="https://github.com/user-attachments/assets/f23c2146-7a2b-4039-851d-71cf8a151af0" />
