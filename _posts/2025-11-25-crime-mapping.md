@@ -52,9 +52,9 @@ Traditional hotspot mapping often uses simple kernel density, which can blur the
 
 My Methodology:
 
-Filtering: We filtered the data to include only Ultra-High Harm events (Robbery, Violence, Weapons, etc., with a score $\ge 300$ days).
+Filtering: We filtered the data to include only Ultra-High Harm events (Robbery, Violence, Weapons, etc., with a score >= 300$ days).
 
-Clustering: We ran DBSCAN using a small radius ($\epsilon = 75$ meters) and a minimum threshold ($MinPts=10$ incidents). This algorithm identifies dense clusters of high-harm events and isolates them from general crime "noise" (outliers).
+Clustering: We ran DBSCAN using a small radius (ε = 75 meters) and a minimum threshold (MinPts=10 incidents). This algorithm identifies dense clusters of high-harm events and isolates them from general crime "noise" (outliers).
 
 Visualization: On the interactive map, we visualized the output using Convex Hulls—the smallest possible polygon that enforces all clustered points. This polygon precisely delineates the micro-hotspot boundary.
 
