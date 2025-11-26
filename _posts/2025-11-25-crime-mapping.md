@@ -8,7 +8,7 @@ tags:
   - Hotspot Policing
   - Crime Hamr Index
   - Time Series Forecasting
-  - Density Based Clustering
+  - DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
 ---
 
 <img width="512" height="512" alt="crime-mapping" src="https://github.com/user-attachments/assets/f23c2146-7a2b-4039-851d-71cf8a151af0" />
@@ -56,7 +56,7 @@ Traditional hotspot mapping often uses simple kernel density, which can blur the
 
 My Methodology:
 
-Filtering: We filtered the data to include only Ultra-High Harm events (Robbery, Violence, Weapons, etc., with a score >= 300$ days).
+Filtering: We filtered the data to include only Ultra-High Harm events (Robbery, Violence, Weapons, etc., with a score >= 300 days).
 
 Clustering: We ran DBSCAN using a small radius (ε = 75 meters) and a minimum threshold (MinPts=10 incidents). This algorithm identifies dense clusters of high-harm events and isolates them from general crime "noise" (outliers).
 
