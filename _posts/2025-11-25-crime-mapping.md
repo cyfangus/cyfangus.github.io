@@ -1,7 +1,7 @@
 ---
 title: 'Beyond the Numbers: How We Used Data Science to Uncover True Crime Hotspots'
 date: 2025-11-25
-image: ![crime-mapping](https://github.com/user-attachments/assets/4e01ec51-e2b9-4dfb-8940-74d908eaf937)
+image: ![crime-mapping](https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711](https://github.com/user-attachments/assets/f23c2146-7a2b-4039-851d-71cf8a151af0)
 permalink: /posts/2025/01/crime-mapping/
 tags:
   - Crime Mapping
