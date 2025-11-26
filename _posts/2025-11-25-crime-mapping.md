@@ -45,6 +45,8 @@ Instead of treating every crime equally, we assigned a 'Harm Score' (measured in
 
 By aggregating the data using these weights, we produced a true "Harm Ranking," showing that the top drivers of societal cost were not the most frequent crimes, but the most severe ones (as seen in the accompanying Harm Score Ranking chart). This foundational step ensures our subsequent analysis focuses police time where it saves the most lives and prevents the most serious injury.
 
+<img width="1420" height="1294" alt="CountByCrimeType" src="https://github.com/user-attachments/assets/e9d6a53d-945b-4d6b-9b3c-a755a646ddae" />
+
 <img width="3000" height="2100" alt="harm_score_ranking" src="https://github.com/user-attachments/assets/9e494ffa-aa30-4617-9442-3c16f6af9687" />
 
 ## Part 2
