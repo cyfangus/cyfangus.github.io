@@ -11,7 +11,7 @@ tags:
   - Destiny Based Clustering
 ---
 
-<img width="512" height="512" alt="crime-mapping" src="https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711](https://github.com/user-attachments/assets/f23c2146-7a2b-4039-851d-71cf8a151af0" />
+<img width="512" height="512" alt="crime-mapping" src="https://github.com/user-attachments/assets/f23c2146-7a2b-4039-851d-71cf8a151af0" />
 
 # Beyond the Numbers: How We Used Data Science to Uncover True Crime Hotspots
 
