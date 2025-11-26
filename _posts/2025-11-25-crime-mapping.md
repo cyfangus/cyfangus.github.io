@@ -62,6 +62,8 @@ The Key Insight: Town Centre Nexus
 
 The interactive map clearly shows that these high-harm micro-hotspots are not randomly distributed. They consistently overlap with Wards identified as containing Night-Time Economy (NTE) areas or central commercial zones (highlighted in yellow on the map). This spatial correlation provides clear supporting evidence for targeted police deployments on weekend nights and specific commercial security checks.
 
+see the interactive map [here](https://github.com/cyfangus/CrimeMapping/blob/main/interactive_harm_map.html)
+
 ## Part 3
 ### Predictive Analytics—Forecasting Future Harm
 
