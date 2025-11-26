@@ -37,7 +37,11 @@ The first step in this analysis was injecting value into the data. We achieved t
 
 Instead of treating every crime equally, we assigned a 'Harm Score' (measured in custodial days) to each incident:
 
-<img width="955" height="257" alt="Screenshot 2025-11-26 at 15 43 42" src="https://github.com/user-attachments/assets/52924464-1bfb-4ac2-9855-a3a6c3a6bd3b" />
+| Crime Type | NCHI Harm Score (Days) | Implication |
+| Robbery | 1000 | Highest harm, requiring targeted intervention. |
+| Violence/Sexual Offences | 450 | Significant public safety priority. |
+| Burglary | 400 | High impact on residents and businesses. |
+| Shoplifting | 20 | Low relative harm, high volume. |
 
 By aggregating the data using these weights, we produced a true "Harm Ranking," showing that the top drivers of societal cost were not the most frequent crimes, but the most severe ones (as seen in the accompanying Harm Score Ranking chart). This foundational step ensures our subsequent analysis focuses police time where it saves the most lives and prevents the most serious injury.
 
