@@ -45,6 +45,8 @@ Instead of treating every crime equally, we assigned a 'Harm Score' (measured in
 
 By aggregating the data using these weights, we produced a true "Harm Ranking," showing that the top drivers of societal cost were not the most frequent crimes, but the most severe ones (as seen in the accompanying Harm Score Ranking chart). This foundational step ensures our subsequent analysis focuses police time where it saves the most lives and prevents the most serious injury.
 
+<img width="3000" height="2100" alt="harm_score_ranking" src="https://github.com/user-attachments/assets/9e494ffa-aa30-4617-9442-3c16f6af9687" />
+
 ## Part 2
 ### Spatial Clustering—Pinpointing Micro-Hotspots
 
@@ -62,7 +64,9 @@ The Key Insight: Town Centre Nexus
 
 The interactive map clearly shows that these high-harm micro-hotspots are not randomly distributed. They consistently overlap with Wards identified as containing Night-Time Economy (NTE) areas or central commercial zones (highlighted in yellow on the map). This spatial correlation provides clear supporting evidence for targeted police deployments on weekend nights and specific commercial security checks.
 
-see the interactive map [here](https://github.com/cyfangus/CrimeMapping/blob/main/interactive_harm_map.html)
+While the map might be too large to be shared, I have taken a screenshot here to show you how it works.
+<img width="2543" height="1287" alt="Screenshot 2025-11-26 at 16 13 10" src="https://github.com/user-attachments/assets/4b918e41-3be1-4e62-ae5f-73396b26b031" />
+
 
 ## Part 3
 ### Predictive Analytics—Forecasting Future Harm
@@ -76,6 +80,11 @@ Impact: This forecast allows police command to:
 Budgeting: Allocate resources for high-harm initiatives well in advance.
 
 Proactive Planning: If the forecast shows an expected increase in total harm, preventative operations can be planned immediately, rather than waiting for quarterly incident reviews.
+
+<img width="3000" height="1800" alt="harm_trends" src="https://github.com/user-attachments/assets/566b887c-171f-40e6-b68f-a8c81f055d15" />
+<img width="3000" height="1800" alt="harm_forecast" src="https://github.com/user-attachments/assets/78e4c63f-cf09-46e9-94dd-e29a131e99e0" />
+
+
 
 ## Conclusion
 ### A Data-Driven Approach to Public Safety
