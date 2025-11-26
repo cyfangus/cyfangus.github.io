@@ -1,17 +1,15 @@
 ---
 title: 'Beyond the Numbers: How We Used Data Science to Uncover True Crime Hotspots'
-date: 2024-07-12
+date: 2025-11-25
 image: https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711
-permalink: /posts/2024/04/fraud-detection/
+permalink: /posts/2025/01/crime-mapping/
 tags:
-  - Synthetic Minority Over-sampling Technique (SMOTE)
-  - Random Forest
-  - Logsitic Regression
-  - XGBoost
-  - Neural Network
+  - Crime Mapping
+  - Hotspot Policing
+  - Crime Hamr Index
+  - Time Series Forecasting
+  - Destiny Based Clustering
 ---
-
-<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8262188c-208d-4f80-8c46-572ad47b8711" />
 
 # Beyond the Numbers: How We Used Data Science to Uncover True Crime Hotspots
 
