@@ -1,11 +1,11 @@
 ---
 title: "Quantitative Research Assistant"
 collection: teaching
-type: "Security and Crime Science"
+type: "Social Work Research"
 permalink: /teaching/01_RA
-venue: "University College London"
-date: 2022-09-01
-location: "London, UK"
+venue: "City University of Hong Kong"
+date: 2018-09-01
+location: "Hong Kong"
 ---
 
 •	Engineered a robust Data Linkage system to integrate disparate longitudinal datasets across multiple waves; created a Unique Identifier (UID) framework to maintain 100% record integrity and eliminated data attrition for a cohort of 3,000+ participants.
