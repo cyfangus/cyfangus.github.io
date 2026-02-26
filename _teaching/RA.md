@@ -1,16 +1,16 @@
 ---
-title: "Postgraduate Teaching Assistant (Data Science & Statistics)"
+title: "Quantitative Research Assistant"
 collection: teaching
 type: "Security and Crime Science"
-permalink: /teaching/PGTA
+permalink: /teaching/01_RA
 venue: "University College London"
 date: 2022-09-01
 location: "London, UK"
 ---
 
-•	Facilitated weekly technical workshops for 100+ students, covering geospatial data analysis and visualisation in R (dplyr, sf, ggplot2).
-•	Instructed 100+ students in quantitative research methodologies, providing technical guidance on statistical inference, hypothesis testing, and statistical modelling on STATA.
-•	Standardised evaluation process for data projects by developing automated grading scripts, ensuring marking consistency and reducing turnaround time by 20%.
-•	Led weekly diagnostic sessions and comprehensive code reviews for 100+ end-of-module projects; audited end-to-end pipelines including data cleaning, feature engineering, and model evaluation.
-•	Collaborated with Senior Faculty to design course modules, integrating real-world datasets to enhance student engagement with predictive modelling frameworks.
-
+•	Engineered a robust Data Linkage system to integrate disparate longitudinal datasets across multiple waves; created a Unique Identifier (UID) framework to maintain 100% record integrity and eliminated data attrition for a cohort of 3,000+ participants.
+•	Developed a systematic data cleaning pipeline to identify and resolve anomalies in longitudinal survey responses; applied data imputation techniques to handle missing values, ensuring statistical power of final analysis.
+•	Engineered composite features from raw behavioural data by synthesising multiple survey variables into validated psychometric scales, improvingthe  interpretability of regression models.
+•	Partnered with cross-functional stakeholders (social workers) to engineer a standardised screening tool; applied Factor Analysis and Reliability Testing in SPSS to validate instrument's longitudinal consistency and predictive power.
+•	Co-authored a research grant proposal (HK Beat Drug Fund), creating the Data Management Plan (DMP) and methodological framework to assure scalable and reproducible data collection.
+•	Executed rigorous data de-identification and anonymisation of sensitive datasets for peer-reviewed publication, ensuring 100% compliance with privacy mandates while preserving data utility for complex analysis.
