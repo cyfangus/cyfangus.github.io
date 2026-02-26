@@ -1,12 +1,11 @@
 ---
+layout: home
+title: "About Me"
 permalink: /
-title: "About me"
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
 ---
 
+# 👋 About Me
 
 👋 Hi, I am **Angus Chan, a Doctoral Researcher at University College London (UCL)** within the Department of Security and Crime Science. With **over 6 years of experience** in predictive analytics and experimental design, I specialize in bridging the gap between complex statistical modeling and actionable business impact.
 
