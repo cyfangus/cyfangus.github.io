@@ -29,7 +29,7 @@ I am passionate about leveraging my data science skills to solve "unsolvable" da
 ## 📬 Let's Connect
 I am always open to discussing new opportunities in Data Science, Fraud Strategy, and MLOps.
 
-📄 [Download my latest CV](https//github.com/cyfangus/cyfangus.io/files/Angus_Chan_Data_Scientist_CV.pdf)
+📄 [Download my latest CV](http://cyfangus.github.io/files/Angus_Chan_Data_Scientist_CV.pdf)
 
 💻 [Explore my GitHub Portfolio](https://github.com/cyfangus)
 
