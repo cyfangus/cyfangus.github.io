@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-### Click here to view [my latest CV](https://github.com/cyfangus/cyfangus.github.io/blob/fc4b5c5e81e78d3438224a9efe19cdf63e5d4cfb/files/Angus_Chan_Data_Scientist_CV.pdf)
+### Click here to view [my latest CV](http://cyfangus.github.io/files/Angus_Chan_Data_Scientist_CV.pdf)
 
 <!--
 Education
