@@ -1,5 +1,5 @@
 ---
-title: "Postgraduate Teaching Assistant"
+title: "Postgraduate Teaching Assistant (Data Science & Statistics)"
 collection: teaching
 type: "Security and Crime Science"
 permalink: /teaching/PGTA
@@ -8,14 +8,9 @@ date: 2022-09-01
 location: "London, UK"
 ---
 
-### Crime mapping module
-Assisted in the Crime Mapping module for 100 undergraduates, guiding them in utilizing R for spatial
-analysis of crime. Provided in-class assistance and organised troubleshooting sessions using R tutorials
-created by the lecturer.
-### Quantitative methods module
-Conducted workshops in the Quantitative Methods module for 50 undergraduates, assisting in mastering
-diverse statistical analyses using STATA and understanding foundational concepts like confidence intervals,
-hypothesis testing, and both linear and logistic regression. Provided in-class assistance to the lecturer.
-### Foundation of Security and Crime Science module
-Led seminars for 40 undergraduates in the Foundations of Security and Crime Science module, introducing
-core concepts like problem-oriented policing and crowd policing through PowerPoints and discussions.
+•	Facilitated weekly technical workshops for 100+ students, covering geospatial data analysis and visualisation in R (dplyr, sf, ggplot2).
+•	Instructed 100+ students in quantitative research methodologies, providing technical guidance on statistical inference, hypothesis testing, and statistical modelling on STATA.
+•	Standardised evaluation process for data projects by developing automated grading scripts, ensuring marking consistency and reducing turnaround time by 20%.
+•	Led weekly diagnostic sessions and comprehensive code reviews for 100+ end-of-module projects; audited end-to-end pipelines including data cleaning, feature engineering, and model evaluation.
+•	Collaborated with Senior Faculty to design course modules, integrating real-world datasets to enhance student engagement with predictive modelling frameworks.
+
