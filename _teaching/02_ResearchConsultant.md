@@ -3,7 +3,7 @@ title: "Quantitative Research Consultant"
 collection: teaching
 type: "Research project on crime reporting portal"
 permalink: /teaching/02
-venue: "London, UK"
+venue: "University College London"
 date: 2023-01-01
 location: "London, UK"
 ---
