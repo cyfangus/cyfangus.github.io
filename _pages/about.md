@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am **Angus Chan, a Doctoral Researcher at University College London (UCL)** within the Department of Security and Crime Science. With **over 6 years of experience** in predictive analytics and experimental design, I specialize in bridging the gap between complex statistical modeling and actionable business impact.
+👋 Hi, I am **Angus Chan, a Doctoral Researcher at University College London (UCL)** within the Department of Security and Crime Science. With **over 6 years of experience** in predictive analytics and experimental design, I specialize in bridging the gap between complex statistical modeling and actionable business impact.
 
 My work sits at the intersection of **Behavioral Science and Machine Learning**. Currently, I serve as a **Quantitative Research Consultant** for the **Korean National Police Agency**, where I act as the technical lead for designing **controlled experiments (A/B Testing)** and architecting **automated ETL pipelines** to uncover behavioral patterns in high-stakes public sector data.
 
