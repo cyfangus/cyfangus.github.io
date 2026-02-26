@@ -1,14 +1,36 @@
----
+<img width="468" height="21" alt="image" src="https://github.com/user-attachments/assets/fe784ff8-6018-4b69-bfd7-987b48602310" />---
 permalink: /
-title: "About me"
+title: "👋 About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Hi, my name is Angus. I am originally from Hong Kong and currently based in London, UK. I am a PhD researcher at the Department of Security and Crime Science at University College London. I have a strong background in data analysis, statistical modeling, and machine learning, with hands-on experience in Python and R. Throughout my academic research, I have developed a deep understanding of how to derive actionable insights from complex datasets, particularly in real-world contexts such as social dynamics in policing. My PhD research applies advanced statistical techniques to understand the role of social psychology in the policing context.
+I am **Angus Chan, a Doctoral Researcher at University College London (UCL)** within the Department of Security and Crime Science. With **over 6 years of experience** in predictive analytics and experimental design, I specialize in bridging the gap between complex statistical modeling and actionable business impact.
 
-In addition to my research in psychology and criminology, I have acquired valuable machine learning and data analysis skills through postgraduate courses and online certifications. These certifications have equipped me with hands-on experience in tools such as scikit-learn for model development, TensorFlow for deep learning, and SQL for database management. I have also gained expertise in using data visualization tools, such as Tableau and PowerBI, and have worked with Natural Language Processing (NLP) techniques for text analysis. Recently, I have expanded my skill set by learning to work with Large Language Models (LLMs), gaining experience in tasks such as topic modelling and sentiment analysis, and understanding how to leverage these models for advanced NLP applications.
+My work sits at the intersection of **Behavioral Science and Machine Learning**. Currently, I serve as a **Quantitative Research Consultant** for the **Korean National Police Agency**, where I act as the technical lead for designing **controlled experiments (A/B Testing)** and architecting **automated ETL pipelines** to uncover behavioral patterns in high-stakes public sector data.
 
-I am eager to bring my technical expertise, problem-solving abilities, and passion for data science to contribute to impactful projects and drive data-driven decisions within a collaborative team setting.
+
+🚀 Technical Expertise & MLOps
+I am a **Microsoft Certified: Azure Data Scientist Associate (DP-100)**. I don’t just build models in notebooks; I architect end-to-end solutions.
+
+**Cloud & MLOps**: Proficient in **Azure Machine Learning Service**, **MLflow**, and Model Registry for tracking, versioning, and deploying production-ready models.
+
+**Fraud Analytics**: Recently engineered an **end-to-end Fraud Detection system** on Azure. By resolving extreme class imbalance (0.17%) using **SMOTE** and Random Forest optimization, I achieved a **Recall of 82.6%** and **AUPRC of 0.88**, significantly outperforming baseline Logistic Regression models.
+
+**Full Stack Data Science**: Expert in Python (Scikit-learn, Pandas), SQL, and R (Tidyverse, Spatial Analytics).
+
+🎓 Academic Rigor to Policy Impact
+My PhD research at UCL applies advanced statistical techniques to evaluate **identity, fairness, and trust** within policing. I have a proven track record of translating multi-methodological research—including **meta-analyses (n=200,966)**—into policy recommendations for international stakeholders.
+
+I am passionate about leveraging my data science skills to solve "unsolvable" data challenges. I thrive in collaborative environments where data integrity and technical excellence are the standard.
+
+📬 Let's Connect
+I am always open to discussing new opportunities in Data Science, Fraud Strategy, and MLOps.
+
+📄 Download my latest CV
+
+💻 [Explore my GitHub Portfolio](https://github.com/cyfangus)
+
+📧 [Contact Me via LinkedIn](https://www.linkedin.com/in/cyfangus/)
