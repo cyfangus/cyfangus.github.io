@@ -1,16 +1,16 @@
 ---
-title: "Research Consultant"
+title: "Quantitative Research Consultant"
 collection: teaching
 type: "Research project on crime reporting portal"
-permalink: /teaching/PGTA
+permalink: /teaching/02
 venue: "London, UK"
 date: 2023-01-01
 location: "London, UK"
 ---
 
-- Collaborated with Salesforce and Merseyside Police in a research team, conducting an A/B test for an
-online crime reporting portal. Explored the impact of its design on participant satisfaction and concluded
-that user experience and trust in police predict satisfaction.
-- Produced a comprehensive 53-page report, incorporating findings from statistical tests (t-test, ANOVA,
-linear regression) and Natural Language Processing on participants’ qualitative feedback to produce
-wordclouds by using R and Python.
+•	Directed the full data science lifecycle in Python, from initial data ingestion and automated cleaning to model validation and secure data archival, ensuring 100% compliance with GDPR and FAIR data principles.
+•	Served as the primary technical liaison between UCL research team and external industry partners, translating complex statistical methodologies into actionable policy recommendations via executive presentations.
+•	Applied advanced regression analysis and hypothesis testing (t-tests) to identify key drivers of user satisfaction, leading to service optimisations that increased satisfaction by 30%.
+•	Designed a complex multivariate (2x2x2x2 factorial) experiment and a scalable data schema to support multi-factor analysis across 16 experimental cells.
+•	Engineered thematic mining workflows for textual analysis of unstructured user feedback, identifying recurring pain points to drive UX optimisation.
+
