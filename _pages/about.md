@@ -33,4 +33,4 @@ I am always open to discussing new opportunities in Data Science, Fraud Strategy
 
 💻 [Explore my GitHub Portfolio](https://github.com/cyfangus)
 
-📧 [Contact Me via LinkedIn](https://www.linkedin.com/in/cyfangus/)
+📧 [Connect Me on LinkedIn](https://www.linkedin.com/in/cyfangus/)
