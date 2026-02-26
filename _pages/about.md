@@ -12,7 +12,7 @@ Hi, I am **Angus Chan, a Doctoral Researcher at University College London (UCL)*
 My work sits at the intersection of **Behavioral Science and Machine Learning**. Currently, I serve as a **Quantitative Research Consultant** for the **Korean National Police Agency**, where I act as the technical lead for designing **controlled experiments (A/B Testing)** and architecting **automated ETL pipelines** to uncover behavioral patterns in high-stakes public sector data.
 
 
-🚀 Technical Expertise & MLOps
+## 🚀 Technical Expertise & MLOps
 I am a **Microsoft Certified: Azure Data Scientist Associate (DP-100)**. I don’t just build models in notebooks; I architect end-to-end solutions.
 
 **Cloud & MLOps**: Proficient in **Azure Machine Learning Service**, **MLflow**, and Model Registry for tracking, versioning, and deploying production-ready models.
@@ -21,12 +21,12 @@ I am a **Microsoft Certified: Azure Data Scientist Associate (DP-100)**. I don�
 
 **Full Stack Data Science**: Expert in Python (Scikit-learn, Pandas), SQL, and R (Tidyverse, Spatial Analytics).
 
-🎓 Academic Rigor to Policy Impact
+## 🎓 Academic Rigor to Policy Impact
 My PhD research at UCL applies advanced statistical techniques to evaluate **identity, fairness, and trust** within policing. I have a proven track record of translating multi-methodological research—including **meta-analyses (n=200,966)**—into policy recommendations for international stakeholders.
 
 I am passionate about leveraging my data science skills to solve "unsolvable" data challenges. I thrive in collaborative environments where data integrity and technical excellence are the standard.
 
-📬 Let's Connect
+## 📬 Let's Connect
 I am always open to discussing new opportunities in Data Science, Fraud Strategy, and MLOps.
 
 📄 [Download my latest CV](https//github.com/cyfangus/cyfangus.io/files/Angus_Chan_Data_Scientist_CV.pdf)
